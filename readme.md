@@ -1,6 +1,12 @@
+# Setup
+
 ```
 npm install -d
 npm start
 ```
 
-then visit `localhost:8081`
+Then visit `localhost:8081`
+
+# Customization
+
+- To edit the personality quiz questions, edit `sim/quiz/questions.js`
