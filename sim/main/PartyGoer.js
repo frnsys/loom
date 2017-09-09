@@ -4,34 +4,11 @@ import Util from '~/app/Util';
 import Agent from '~/app/Agent';
 import Dialogue from '~/app/Dialogue';
 import SocialModel from './Social';
+import ACTIONS from './ACTIONS';
 import log from 'loglevel';
 
 const COMMITMENT = 50;
-const TIME_RANGE = [100, 200]
-const TIME_SCALE = TIME_RANGE[0] + (TIME_RANGE[1] - TIME_RANGE[0])/2;
 const SOCIAL_ACCLIMATION_RATE = 0.1;
-
-// map action names to their object tags
-const ACTIONS = {
-  'bathroom': {
-    timeout: TIME_RANGE
-  },
-  'eat': {
-    timeout: TIME_RANGE
-  },
-  'gawk': {
-    timeout: TIME_RANGE
-  },
-  'drink_alcohol': {
-    timeout: TIME_RANGE
-  },
-  'drink_water': {
-    timeout: TIME_RANGE
-  },
-  'talk': {
-    timeout: [50, 100]
-  }
-};
 
 class PartyGoer extends Agent {
   constructor(name, state, world, temperature=0.01) {
@@ -95,46 +72,19 @@ class PartyGoer extends Agent {
 
   successor(action, state) {
     state.talking = [];
-    switch (action.name) {
-        case 'bathroom':
-          state.bladder = Math.max(state.bladder-5*TIME_SCALE, 0);
-          break;
-        case 'eat':
-          state.hunger = Math.max(state.hunger-20*TIME_SCALE, 0);
-          break;
-        case 'gawk':
-          state.boredom = state.boredom * 0.6;
-          break;
-        case 'drink_alcohol':
-          state.thirst = Math.max(state.thirst-5*TIME_SCALE, 0);
-          state.bladder += 5*TIME_SCALE;
-          state.bac += (2.5*TIME_SCALE)/state.tolerance;
-          state.sociability = this.baseline.sociability + Math.pow(state.bac, 2);
-          break;
-        case 'drink_water':
-          state.thirst = Math.max(state.thirst-5*TIME_SCALE, 0);
-          state.bladder += 4*TIME_SCALE;
-          break;
-        case 'talk':
-          state.boredom = Math.max(state.boredom-8*TIME_SCALE, 0);
-          state.awkwardness = Math.max(state.awkwardness-8*TIME_SCALE, 0);
-          state.talking.push({
-            id: action.to,
-            topic: action.topic
-          });
-          break;
+    if (action.name == 'continue') {
+      // the 'continue' action is a special action
+      // prevent an agent from behaving too sporadically.
+      // there is an 'overhead' to switching between actions,
+      // represented by `-state.commitment`. This negative weighting
+      // discourages an agent from switching actions. As they repeat
+      // the `continue` action, their 'commitment' to that action depletes,
+      // so eventually they are more open to switching tasks.
+      state = this.successor(this._prevAction, state);
+      state.commitment = 0 // so the commitment doesn't down-weight
 
-        // the 'continue' action is a special action
-        // prevent an agent from behaving too sporadically.
-        // there is an 'overhead' to switching between actions,
-        // represented by `-state.commitment`. This negative weighting
-        // discourages an agent from switching actions. As they repeat
-        // the `continue` action, their 'commitment' to that action depletes,
-        // so eventually they are more open to switching tasks.
-        case 'continue':
-          state = this.successor(this._prevAction, state);
-          state.commitment = 0 // so the commitment doesn't down-weight
-          return state;
+    } else if (action.name in ACTIONS) {
+      ACTIONS[action.name]['successor'](action, state, this);
     }
     return state;
   }

@@ -3,7 +3,7 @@ import _ from 'lodash';
 import io from 'socket.io-client';
 import moment from 'moment';
 import Question from './Question';
-import questions from './questions';
+import QUESTIONS from './QUESTIONS';
 import './style.sass';
 
 var socket = io();
@@ -37,8 +37,7 @@ if ($(".question").length) {
 
 
 $(function() {
-  console.log(questions);
-  var allQuestions = questions.map(q => new Question(q));
+  var allQuestions = QUESTIONS.map(q => new Question(q));
   _.each(allQuestions, function(q) {
     $("#questions").append(q.getHtml());
   })

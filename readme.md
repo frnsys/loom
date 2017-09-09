@@ -7,6 +7,7 @@ npm start
 
 Then visit `localhost:8081`
 
-# Customization
+# Customizing content
 
-- To edit the personality quiz questions, edit `sim/quiz/questions.js`
+- To edit the actions an agent can take, edit `sim/main/ACTIONS.js`
+- To edit the personality quiz questions, edit `sim/quiz/QUESTIONS.js`
