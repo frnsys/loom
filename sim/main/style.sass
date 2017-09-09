@@ -1,0 +1,81 @@
+html
+  font-family: 'Cousine', 'monospace', sans-serif
+  background: pink
+
+body
+  margin: 1em
+  padding: 0
+
+main
+  max-width: 960px
+  margin: 0 auto
+
+td
+  padding: 0.2em 0
+  white-space: nowrap
+
+td:first-child
+  padding-right: 2em
+
+.bubble
+  margin: 2%
+  display: inline-block
+  position: relative
+  width: 28%
+  height: auto
+  background-color: lightyellow
+  vertical-align: top
+  min-height: 4em
+  border-radius: 1em
+
+.tri-right.left-in:after
+  content: ' '
+  position: absolute
+  width: 0
+  height: 0
+  left: -20px
+  right: auto
+  top: 24px
+  bottom: auto
+  border: 12px solid
+  border-color: lightyellow lightyellow transparent transparent
+
+.talktext
+  padding: 1em
+  text-align: left
+  line-height: 1.5em
+  position: relative
+
+h5
+  font-size: 0.8em
+  text-align: right
+  position: absolute
+  width: 100%
+  bottom: -1.5em
+
+.thought
+  opacity: 0.5
+
+#charts
+  position: absolute
+  left: 0
+  top: 0
+  z-index: -1
+
+.agent-info
+  margin: 1em
+  padding: 2em
+  background: #f8f8f8
+  box-shadow: 4px 4px rgba(0,0,0,0.1)
+  max-width: 800px
+  max-height: 400px
+  display: inline-block
+  .agent-charts
+    display: flex
+  .agent-actions
+    width: 200px
+  .agent-states
+    width: 600px
+  .agent-last-action
+    padding: 1em 0
+    text-align: center
