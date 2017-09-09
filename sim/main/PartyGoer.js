@@ -46,7 +46,6 @@ class PartyGoer extends Agent {
     // talking
     this.world.socialNetwork.nodes.map(other => {
       if (other !== this.id) {
-        var a = this.world.agents[other];
         var talkActions = SocialModel.conversationTopics.map(t => ({
           name: 'talk',
           to: other,
@@ -55,6 +54,20 @@ class PartyGoer extends Agent {
         actions = actions.concat(_.shuffle(talkActions));
       }
     });
+
+    var p_meet_random = Math.sqrt(this.state.sociability)/100;
+    if (Math.random() < p_meet_random) {
+      var other = _.sample(this.world.agents);
+      if (other.id !== this.id) {
+        console.log(`considering talking to ${other.id}`);
+        var talkActions = SocialModel.conversationTopics.map(t => ({
+          name: 'talk',
+          to: other.id,
+          topic: t,
+        }));
+        actions = actions.concat(_.shuffle(talkActions));
+      }
+    }
 
     // special action of "continue"
     if (this._prevAction) {
@@ -148,7 +161,7 @@ class PartyGoer extends Agent {
 
   render(action) {
     if (action.name == 'talk') {
-      this.world.render(this.id, Dialogue.createDialogue(this, action), 'talk');
+      this.world.render(this.id, Dialogue.createDialogue(this, action), 'talk', action.to);
     } else {
       this.world.render(this.id, Dialogue.createThought(this, action), 'thought');
     }

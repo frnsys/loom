@@ -16,8 +16,8 @@ import './style.sass';
 var world = {
   agents: {},
   socialNetwork: new SocialNetwork(),
-  render: function(name, text, type) {
-    $('.sim').append(`<div class="bubble tri-right left-in ${type}"><div class="talktext">${text}</div><h5>${name}</h5></div>`);
+  render: function(name, text, type, other) {
+    $('.sim').append(`<div class="bubble tri-right left-in ${type}"><div class="talktext">${text}</div><h5>${name}${other ? `, to ${other}` : ''}</h5></div>`);
     if ($(window).scrollTop() + $(window).height() < $(document).height()) {
       $('html, body').animate({ scrollTop: $(document).height() });
     }

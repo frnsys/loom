@@ -74,6 +74,7 @@ class Sockets {
        topicPreference: [-1, -1]
      }, this.world)
     agent.convo_topics = data.quizResults.convo_topics;
+
     //  user spawned when personality quiz happens
     this.world.agents[agent.id] = agent
     this.broadcastAgentUpdate();

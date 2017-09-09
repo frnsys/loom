@@ -1,5 +1,11 @@
 import Util from '~/app/Util';
 
+var technical = [-1, 0, 1],
+    gossip = [-1, 0, 1];
+var conversationTopics = [].concat(...technical.map(x => {
+  return gossip.map(y => [x, y]);
+}));
+
 // agent needs to estimate how others will
 // respond to certain convo topics
 class SocialModel {
@@ -69,12 +75,6 @@ class SocialModel {
   }
 }
 
-
-var technical = [-1, 0, 1],
-    gossip = [-1, 0, 1];
-SocialModel.conversationTopics = [].concat(...technical.map(x => {
-  return gossip.map(y => [x, y]);
-}));
-
+SocialModel.conversationTopics = conversationTopics;
 
 export default SocialModel;
