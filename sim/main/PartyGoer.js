@@ -2,7 +2,7 @@ import _ from 'underscore';
 import moment from 'moment';
 import Util from '~/app/Util';
 import Agent from '~/app/Agent';
-import Dialogue from '~/app/Dialogue';
+import Dialogue from './Dialogue/Dialogue';
 import SocialModel from './Social';
 import ACTIONS from './ACTIONS';
 import log from 'loglevel';
