@@ -5,6 +5,7 @@ import $ from 'jquery';
 import _ from 'lodash';
 import UI from './UI';
 import Util from './Util';
+import Stats from './Stats';
 import Chart from './Chart';
 import Sockets from './Sockets';
 import PartyGoer from './PartyGoer';
@@ -52,6 +53,7 @@ for(var i = 0; i < n_agents; i++) {
 
 var charts = Util.getParameterByName('charts') == 'true' ? _.map(world.agents, a => new Chart(a)) : [];
 var ui = new UI(world);
+var stats = new Stats();
 
 // boot the world
 var sockets = new Sockets(world);
@@ -60,10 +62,17 @@ function run() {
   requestAnimationFrame(run);
   if (elapsedFrames % 2 == 0) {
     _.each(world.agents, a => {
-      a.update()
+      var action = a.update();
+      if (action && action.name !== 'continue') {
+        stats.add(a, action);
+      }
     });
     _.each(charts, c => c.update());
     ui.update();
+
+    if (elapsedFrames % 100 == 0) {
+      stats.update();
+    }
   }
   elapsedFrames ++;
 }

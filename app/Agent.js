@@ -74,8 +74,8 @@ class Agent {
       this.utility(this.state, null, false, true);
       this.lastAction = action;
       log.info(this.state);
+      return action;
     }
-
   }
 
   decide() {
