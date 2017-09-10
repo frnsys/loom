@@ -18,6 +18,7 @@ class PartyGoer extends Agent {
 
     this.socialModel = new SocialModel();
     this.topicPreference = state.topicPreference;
+    this.talkingTo = null;
 
     this.baseline = {
       sociability: state.sociability
@@ -44,29 +45,37 @@ class PartyGoer extends Agent {
     });
 
     // talking
-    this.world.socialNetwork.nodes.map(other => {
-      if (other !== this.id) {
-        var talkActions = SocialModel.conversationTopics.map(t => ({
-          name: 'talk',
-          to: other,
-          topic: t,
-        }));
-        actions = actions.concat(_.shuffle(talkActions));
-      }
-    });
+    if (this.talkingTo === null) {
+      this.world.socialNetwork.nodes.map(other => {
+        if (other !== this.id && this.world.agents[other].talkingTo === null) {
+          var talkActions = SocialModel.conversationTopics.map(t => ({
+            name: 'talk',
+            to: other,
+            topic: t,
+          }));
+          actions = actions.concat(_.shuffle(talkActions));
+        }
+      });
 
-    var p_meet_random = Math.sqrt(this.state.sociability)/100;
-    if (Math.random() < p_meet_random) {
-      var other = _.sample(this.world.agents);
-      if (other.id !== this.id) {
-        console.log(`considering talking to ${other.id}`);
-        var talkActions = SocialModel.conversationTopics.map(t => ({
-          name: 'talk',
-          to: other.id,
-          topic: t,
-        }));
-        actions = actions.concat(_.shuffle(talkActions));
+      var p_meet_random = Math.sqrt(this.state.sociability)/100;
+      if (Math.random() < p_meet_random) {
+        var other = _.sample(this.world.agents);
+        if (other.id !== this.id && other.talkingTo === null) {
+          var talkActions = SocialModel.conversationTopics.map(t => ({
+            name: 'talk',
+            to: other.id,
+            topic: t,
+          }));
+          actions = actions.concat(_.shuffle(talkActions));
+        }
       }
+    } else {
+      var talkActions = SocialModel.conversationTopics.map(t => ({
+        name: 'talk',
+        to: this.talkingTo,
+        topic: t,
+      }));
+      actions = actions.concat(_.shuffle(talkActions));
     }
 
     // special action of "continue"
@@ -200,6 +209,11 @@ class PartyGoer extends Agent {
       var expected = this.utility(this.state),
           actual = this.utility(this.state, null, false),
           diff = actual - expected;
+
+      var other = this.world.agents[action.to];
+      other.talkingTo = this.id;
+      this.talkingTo = action.to;
+
       // TODO need them to sometimes randomly choose new topics
       // or they will just get stuck on one
       if (diff > 0) {
@@ -230,6 +244,12 @@ class PartyGoer extends Agent {
       this.world.socialNetwork.setEdge(action.to, this.id, {
         affinity: Util.ewma(prev, otherEnjoyment*SOCIAL_ACCLIMATION_RATE)
       });
+
+    // end convo
+    } else if (this.talkingTo != null) {
+      var other = this.world.agents[this.talkingTo];
+      other.talkingTo = null;
+      this.talkingTo = null;
     }
 
     this._prevAction = action;

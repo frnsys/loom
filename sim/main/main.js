@@ -3,6 +3,7 @@ log.setLevel('error');
 
 import $ from 'jquery';
 import _ from 'lodash';
+import UI from './UI';
 import Util from './Util';
 import Chart from './Chart';
 import Sockets from './Sockets';
@@ -17,7 +18,7 @@ var world = {
   agents: {},
   socialNetwork: new SocialNetwork(),
   render: function(name, text, type, other) {
-    $('.sim').append(`<div class="bubble tri-right left-in ${type}"><div class="talktext">${text}</div><h5>${name}${other ? `, to ${other}` : ''}</h5></div>`);
+    $('.sim').append(`<div class="bubble tri-right left-in ${type}"><div class="talktext">${text}</div><h5><span class="agent-ref" data-id="${name}">${name}</span>${other ? `, to <span class="agent-ref" data-id="${other}">${other}</span>` : ''}</h5></div>`);
     if ($(window).scrollTop() + $(window).height() < $(document).height()) {
       $('html, body').animate({ scrollTop: $(document).height() });
     }
@@ -50,6 +51,7 @@ for(var i = 0; i < n_agents; i++) {
 }
 
 var charts = Util.getParameterByName('charts') == 'true' ? _.map(world.agents, a => new Chart(a)) : [];
+var ui = new UI(world);
 
 // boot the world
 var sockets = new Sockets(world);
@@ -61,6 +63,7 @@ function run() {
       a.update()
     });
     _.each(charts, c => c.update());
+    ui.update();
   }
   elapsedFrames ++;
 }
