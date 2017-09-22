@@ -54,7 +54,7 @@ Dialogue.createThought = function(agent, action) {
   console.log(action);
   if(action.name) {
     console.log(action)
-    return action.emoji + " (" + Dialogue.grammar.flatten("#" + action.name + "#") + ")";
+    return `<h1 class="action-emoji">${action.emoji}</h1>` + " (" + Dialogue.grammar.flatten("#" + action.name + "#") + ")";
   }
 };
 
