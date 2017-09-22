@@ -53,8 +53,8 @@ Dialogue.createThought = function(agent, action) {
   // bathroom / eat / drink_alcohol / drink_water / bathroom - constants from PartyGoer.ACTIONS
   console.log(action);
   if(action.name) {
-    console.log(action.name)
-    return "(" + Dialogue.grammar.flatten("#" + action.name + "#") + ")";
+    console.log(action)
+    return action.emoji + " (" + Dialogue.grammar.flatten("#" + action.name + "#") + ")";
   }
 };
 

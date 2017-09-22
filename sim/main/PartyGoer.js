@@ -41,6 +41,7 @@ class PartyGoer extends Agent {
     var actions = _.without(Object.keys(ACTIONS), 'talk').map(name => {
       return {
         name: name,
+        emoji: ACTIONS[name].emoji
       }
     });
 
