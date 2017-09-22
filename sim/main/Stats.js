@@ -1,4 +1,25 @@
+import $ from 'jquery';
 import _ from 'underscore';
+import ACTIONS from './ACTIONS';
+
+// define leaderboard rankings here
+const rankings = [{
+  desc: r => `${ACTIONS['drink_alcohol'].emoji} Tipsiest: ${r.max.id}`,
+  fn: h => {
+    return _.where(h, {name: 'drink_alcohol'}).length;
+  }
+}, {
+  desc: r => `${ACTIONS['eat'].emoji} Biggest appetite: ${r.max.id}`,
+  fn: h => {
+    return _.where(h, {name: 'eat'}).length;
+  }
+}, {
+  desc: r => `${ACTIONS['drink_water'].emoji} Most hydrated: ${r.max.id}`,
+  fn: h => {
+    return _.where(h, {name: 'drink_water'}).length;
+  }
+}];
+const leaderboard = $('#leaderboard');
 
 class Stats {
   constructor() {
@@ -13,11 +34,10 @@ class Stats {
   }
 
   update() {
-    // example
-    var res = this.leader(h => {
-      return _.where(h, {name: 'drink_alcohol'}).length;
-    });
-    console.log(res);
+    // choose a random ranking, compute it, and display
+    var r = _.sample(rankings);
+    var res = this.leader(r.fn);
+    leaderboard.html(`<h1>${r.desc(res)}</h1>`);
   }
 
   leader(fn) {

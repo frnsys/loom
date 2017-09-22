@@ -70,7 +70,7 @@ function run() {
     _.each(charts, c => c.update());
     ui.update();
 
-    if (elapsedFrames % 100 == 0) {
+    if (elapsedFrames % 1000 == 0) {
       stats.update();
     }
   }
