@@ -1,3 +1,5 @@
+import ACTIONS from './ACTIONS';
+
 // define leaderboard rankings here
 export default [{
   desc: r => `${ACTIONS['drink_alcohol'].emoji} Tipsiest: ${r.max.id}`,
