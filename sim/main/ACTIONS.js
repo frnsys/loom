@@ -7,21 +7,22 @@ export default {
     successor: function(action, state) {
       state.bladder = Math.max(state.bladder-5*TIME_SCALE, 0);
     },
-    emoji: '🚽'
+    emoji: ['🚽']
   },
   'eat': {
     timeout: TIME_RANGE,
     successor: function(action, state) {
       state.hunger = Math.max(state.hunger-20*TIME_SCALE, 0);
     },
-    emoji: '🍔'
+    emoji: ['🍔', '🍞', '🥖', '🥞', '🍤', '🍗', '🍖', '🍕', '🌭', '🍟', '🥙', '🌮', '🌯', '🥗',
+      '🥘', '🍝', '🍜', '🍲', '🍥', '🍣', '🍱', '🍛', '🍚', '🍙']
   },
   'gawk': {
     timeout: TIME_RANGE,
     successor: function(action, state) {
       state.boredom = state.boredom * 0.6;
     },
-    emoji: '📱'
+    emoji: ['📱']
   },
   'drink_alcohol': {
     timeout: TIME_RANGE,
@@ -31,7 +32,7 @@ export default {
       state.bac += (2.5*TIME_SCALE)/state.tolerance;
       state.sociability = agent.baseline.sociability + Math.pow(state.bac, 2);
     },
-    emoji: '🍺'
+    emoji: ['🍺', '🍻', '🥂', '🍷', '🥃', '🍸', '🍹', '🍾', '🍶']
   },
   'drink_water': {
     timeout: TIME_RANGE,
@@ -39,7 +40,7 @@ export default {
       state.thirst = Math.max(state.thirst-5*TIME_SCALE, 0);
       state.bladder += 4*TIME_SCALE;
     },
-    emoji: '🚰'
+    emoji: ['💧', '💦']
   },
   'talk': {
     timeout: [50, 100],
@@ -51,6 +52,6 @@ export default {
           topic: action.topic
         });
     },
-    emoji: '📣'
+    emoji: ['📣']
   }
 };
