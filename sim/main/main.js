@@ -3,6 +3,7 @@ log.setLevel('error');
 
 import $ from 'jquery';
 import _ from 'lodash';
+import twemoji from 'twemoji';
 import UI from './UI';
 import Util from './Util';
 import Stats from './Stats';
@@ -19,7 +20,9 @@ var world = {
   agents: {},
   socialNetwork: new SocialNetwork(),
   render: function(name, text, type, other) {
-    $('.sim').append(`<div class="bubble tri-right left-in ${type}"><div class="talktext">${text}</div><h5><span class="agent-ref" data-id="${name}">${name}</span>${other ? `, to <span class="agent-ref" data-id="${other}">${other}</span>` : ''}</h5></div>`);
+    var el = `<div class="bubble tri-right left-in ${type}"><div class="talktext">${text}</div><h5><span class="agent-ref" data-id="${name}">${name}</span>${other ? `, to <span class="agent-ref" data-id="${other}">${other}</span>` : ''}</h5></div>`;
+    el = twemoji.parse(el);
+    $('.sim').append(el);
     if ($(window).scrollTop() + $(window).height() < $(document).height()) {
       $('html, body').animate({ scrollTop: $(document).height() });
     }

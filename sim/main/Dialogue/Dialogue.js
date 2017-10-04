@@ -51,9 +51,7 @@ Dialogue.createDialogue = function(agent, action) {
 
 Dialogue.createThought = function(agent, action) {
   // bathroom / eat / drink_alcohol / drink_water / bathroom - constants from PartyGoer.ACTIONS
-  console.log(action);
   if(action.name) {
-    console.log(action)
     return `<h1 class="action-emoji">${action.emoji}</h1>` + " (" + Dialogue.grammar.flatten("#" + action.name + "#") + ")";
   }
 };
