@@ -88,7 +88,7 @@ class Question {
       var res = Object.keys(this.options.answers).filter((ans) => {
         return answer == this.idifyChoices(ans);
       });
-      return { "convo_topics" : this.options.answers[res[0]] };
+      return this.options.answers[res[0]];
     }
 
     if(this.options.type == "checkboxes") {
