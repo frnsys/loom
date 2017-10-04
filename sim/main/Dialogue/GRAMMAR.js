@@ -68,7 +68,7 @@ export default {
   'talk_gossip_tech': ["Wow I can't believe #topics# did that in front of everybody at the office!"],
   'talk_dating': ["We broke up"],
   'talk_weather_tech': ["The cloud cover today is unprecedented"],
-  'talk_weather_feeling': ["The weather makes me want to die"|"I'm kind of worried aboug global warming"],
+  'talk_weather_feeling': ["The weather makes me want to die", "I'm kind of worried aboug global warming"],
   'talk_insult': ["#talk_insult_variants#, #diminutive#"],
   'talk_compliment': ["#talk_compliment_variants#, #augmentive#", "Looking pretty #talk_compliment_variants#",
     "I like your smile!", "Your ideas are intriguing to me and I wish to subscribe to your newsletter."],
