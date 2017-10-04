@@ -16,21 +16,25 @@ import last_names from './data/surname_given_race.json';
 import '~/css/reset.sass';
 import './style.sass';
 
+const MAX_AGENTS_SHOW_ALL = 4;
+
 var world = {
   agents: {},
   socialNetwork: new SocialNetwork(),
   render: function(name, text, type, other) {
-    var el = `<div class="bubble tri-right left-in ${type}"><div class="talktext">${text}</div><h5><span class="agent-ref" data-id="${name}">${name}</span>${other ? `, to <span class="agent-ref" data-id="${other}">${other}</span>` : ''}</h5></div>`;
-    el = twemoji.parse(el);
-    $('.sim').append(el);
-    if ($(window).scrollTop() + $(window).height() < $(document).height()) {
-      $('html, body').animate({ scrollTop: $(document).height() });
+    if (Math.random() < MAX_AGENTS_SHOW_ALL/Object.keys(world.agents).length) {
+      var el = `<div class="bubble tri-right left-in ${type}"><div class="talktext">${text}</div><h5><span class="agent-ref" data-id="${name}">${name}</span>${other ? `, to <span class="agent-ref" data-id="${other}">${other}</span>` : ''}</h5></div>`;
+      el = twemoji.parse(el);
+      $('.sim').append(el);
+      if ($(window).scrollTop() + $(window).height() < $(document).height()) {
+        $('html, body').animate({ scrollTop: $(document).height() });
+      }
     }
   }
 };
 
 
-var n_agents = 4;
+var n_agents = 40;
 for(var i = 0; i < n_agents; i++) {
   var gender = _.sample(Object.keys(first_names));
   var race = _.sample(Object.keys(last_names));
