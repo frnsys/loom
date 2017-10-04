@@ -23,7 +23,7 @@ var world = {
   socialNetwork: new SocialNetwork(),
   render: function(name, text, type, other) {
     if (Math.random() < MAX_AGENTS_SHOW_ALL/Object.keys(world.agents).length) {
-      var el = `<div class="bubble tri-right left-in ${type}"><div class="talktext">${text}</div><h5><span class="agent-ref" data-id="${name}">${name}</span>${other ? `, to <span class="agent-ref" data-id="${other}">${other}</span>` : ''}</h5></div>`;
+      var el = `<div class="bubble tri-right left-in ${type}"><div class="talktext">${text}</div><h5><span class="agent-ref" style="background:${world.agents[name].color};" data-id="${name}">${name}</span>${other ? `, to <span class="agent-ref" style="background:${world.agents[other].color}" data-id="${other}">${other}</span>` : ''}</h5></div>`;
       el = twemoji.parse(el);
       $('.sim').append(el);
       if ($(window).scrollTop() + $(window).height() < $(document).height()) {
@@ -77,7 +77,7 @@ function run() {
     _.each(charts, c => c.update());
     ui.update();
 
-    if (elapsedFrames % 1000 == 0) {
+    if (elapsedFrames % 54000 == 0) {
       stats.update();
     }
   }

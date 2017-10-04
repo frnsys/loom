@@ -3,7 +3,7 @@ export default {
   /* HELPERS */
   //////////////
   //
-  'bathroom_activity': ["take a shit", "do number two", "take a piss", "adjust my hair", "takd some deep breaths in a toilet stall by myself", "check my phone while pretending to take a shit", "dropp some kids off at the pool", "answer the call of nature"],
+  'bathroom_activity': ["take a shit", "do number two", "take a piss", "adjust my hair", "take some deep breaths in a toilet stall by myself", "check my phone while pretending to take a shit", "dropp some kids off at the pool", "answer the call of nature"],
 
   "drinking_size": "thimble-sized large huge ample generous tiny petite".split(" "),
   "drinking_vessel": "bottle cup mug flask flagon".split(" "),
