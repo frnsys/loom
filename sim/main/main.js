@@ -22,7 +22,8 @@ var world = {
   agents: {},
   socialNetwork: new SocialNetwork(),
   render: function(name, text, type, other) {
-    if (Math.random() < MAX_AGENTS_SHOW_ALL/Object.keys(world.agents).length) {
+    var prob_weight = other ? 2 : 1; // weigh conversations more
+    if (Math.random() < MAX_AGENTS_SHOW_ALL/Object.keys(world.agents).length * prob_weight) {
       var el = `<div class="bubble tri-right left-in ${type}"><div class="talktext">${text}</div><h5><span class="agent-ref" style="background:${world.agents[name].color};" data-id="${name}">${name}</span>${other ? `, to <span class="agent-ref" style="background:${world.agents[other].color}" data-id="${other}">${other}</span>` : ''}</h5></div>`;
       el = twemoji.parse(el);
       $('.sim').append(el);
@@ -34,7 +35,7 @@ var world = {
 };
 
 
-var n_agents = 40;
+var n_agents = 100;
 for(var i = 0; i < n_agents; i++) {
   var gender = _.sample(Object.keys(first_names));
   var race = _.sample(Object.keys(last_names));
