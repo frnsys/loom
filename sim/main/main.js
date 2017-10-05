@@ -78,7 +78,7 @@ function run() {
     _.each(charts, c => c.update());
     ui.update();
 
-    if (elapsedFrames % 54000 == 0) {
+    if (elapsedFrames % 54000 == 0 && elapsedFrames > 0) {
       stats.update();
     }
   }

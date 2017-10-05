@@ -3,11 +3,13 @@ import _ from 'underscore';
 import ACTIONS from './ACTIONS';
 import RANKINGS from './RANKINGS';
 
+const MAX_HISTORY = 200;
 const leaderboard = $('#leaderboard');
 
 class Stats {
   constructor() {
     this.history = {};
+    this.ranking_idx = 0;
   }
 
   add(agent, action) {
@@ -15,13 +17,16 @@ class Stats {
       this.history[agent.id] = [];
     }
     this.history[agent.id].push(action);
+    this.history[agent.id] = this.history[agent.id].slice(0, MAX_HISTORY);
   }
 
   update() {
     // choose a random ranking, compute it, and display
-    var r = _.sample(RANKINGS);
+    var r = RANKINGS[this.ranking_idx % RANKINGS.length];
     var res = this.leader(r.rank);
-    leaderboard.html(`<h1>${r.desc(res)}</h1>`);
+    leaderboard.html(`<h1>${r.desc(res)}</h1>`).fadeIn().delay(20000).fadeOut();
+    console.log(r.desc(res));
+    this.ranking_idx += 1;
   }
 
   leader(fn) {
