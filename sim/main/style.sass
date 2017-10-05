@@ -111,8 +111,8 @@ h5
 #agent
   position: fixed
   font-size: 0.8em
-  top: 1em
-  left: 1em
+  bottom: 1em
+  right: 1em
   background: rgba(0,0,0,0.8)
   color: #fff
   padding: 1em
@@ -129,6 +129,26 @@ h5
   text-align: center
   font-size: 1.4em
   display: none
+
+#focused-agent
+  display: none
+  width: 240px
+  background: #dee9fc
+  padding: 2em
+  position: fixed
+  left: 0
+  top: 0
+  height: 100vh
+  overflow-y: scroll
+  .bubble
+    width: 100%
+    margin: 2em 0
+
+#focused-agent-close
+  position: absolute
+  top: 1em
+  right: 1em
+  cursor: pointer
 
 @keyframes bounceIn
   0%

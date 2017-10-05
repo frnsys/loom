@@ -1,7 +1,11 @@
 import $ from 'jquery';
+import _ from 'lodash';
+
+const HISTORY_PREVIEW = 10;
 
 class UI {
   constructor(world) {
+    world.ui = this;
     var self = this;
     $('body').on('mouseenter', '.agent-ref', function() {
       var id = $(this).data('id');
@@ -9,6 +13,30 @@ class UI {
     });
     $('body').on('mouseleave', '.agent-ref', function() {
       self.agent = null;
+    });
+
+    // focus on single agent
+    $('body').on('click', '.agent-ref', function() {
+      var id = $(this).data('id');
+      self.focused_agent = id;
+      $('#focused-agent-updates').empty();
+
+      // preload HISTORY_PREVIEW past actions
+      _.each(world.stats.history[id].slice(-HISTORY_PREVIEW).reverse(),
+        action => {
+          var el;
+          if (action.name == 'talk') {
+            el = world.renderAction(id, action.repr, 'talk', action.to);
+          } else {
+            el = world.renderAction(id, action.repr, 'thought');
+          }
+          $('#focused-agent-updates').append(el);
+      });
+      $('#focused-agent').fadeIn();
+    });
+
+    $('body').on('click', '#focused-agent-close', function() {
+      $('#focused-agent').hide();
     });
   }
 

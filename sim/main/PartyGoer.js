@@ -188,9 +188,11 @@ class PartyGoer extends Agent {
 
   render(action) {
     if (action.name == 'talk') {
-      this.world.render(this.id, Dialogue.createDialogue(this, action), 'talk', action.to);
+      action.repr = Dialogue.createDialogue(this, action);
+      this.world.render(this.id, action.repr, 'talk', action.to);
     } else {
-      this.world.render(this.id, Dialogue.createThought(this, action), 'thought');
+      action.repr = Dialogue.createThought(this, action);
+      this.world.render(this.id, action.repr, 'thought');
     }
   }
 
