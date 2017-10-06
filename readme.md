@@ -7,7 +7,7 @@ npm start
 
 Then visit `localhost:8081`
 
-![](shot.png)
+![](demo.gif)
 
 # Customizing content
 
