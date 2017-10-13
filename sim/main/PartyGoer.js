@@ -10,6 +10,22 @@ import log from 'loglevel';
 const COMMITMENT = 50;
 const SOCIAL_ACCLIMATION_RATE = 0.1;
 
+const randomColor = (() => {
+  "use strict";
+
+  const randomInt = (min, max) => {
+    return Math.floor(Math.random() * (max - min + 1)) + min;
+  };
+
+  return () => {
+    var h = randomInt(0, 360);
+    var s = randomInt(42, 98);
+    var l = randomInt(60, 90);
+    return `hsl(${h},${s}%,${l}%)`;
+  };
+})();
+
+
 class PartyGoer extends Agent {
   constructor(name, state, world, temperature=0.01) {
     super(state, temperature);
@@ -19,6 +35,7 @@ class PartyGoer extends Agent {
     this.socialModel = new SocialModel();
     this.topicPreference = state.topicPreference;
     this.talkingTo = null;
+    this.color = randomColor();
 
     this.baseline = {
       sociability: state.sociability
@@ -41,7 +58,7 @@ class PartyGoer extends Agent {
     var actions = _.without(Object.keys(ACTIONS), 'talk').map(name => {
       return {
         name: name,
-        emoji: ACTIONS[name].emoji
+        emoji: _.sample(ACTIONS[name].emoji)
       }
     });
 
@@ -171,9 +188,11 @@ class PartyGoer extends Agent {
 
   render(action) {
     if (action.name == 'talk') {
-      this.world.render(this.id, Dialogue.createDialogue(this, action), 'talk', action.to);
+      action.repr = Dialogue.createDialogue(this, action);
+      this.world.render(this.id, action.repr, 'talk', action.to);
     } else {
-      this.world.render(this.id, Dialogue.createThought(this, action), 'thought');
+      action.repr = Dialogue.createThought(this, action);
+      this.world.render(this.id, action.repr, 'thought');
     }
   }
 
