@@ -6,6 +6,7 @@ const HISTORY_PREVIEW = 10;
 class UI {
   constructor(world) {
     world.ui = this;
+    this.world = world;
     var self = this;
     $('body').on('mouseenter', '.agent-ref', function() {
       var id = $(this).data('id');
@@ -18,26 +19,33 @@ class UI {
     // focus on single agent
     $('body').on('click', '.agent-ref', function() {
       var id = $(this).data('id');
-      self.focused_agent = id;
-      $('#focused-agent-updates').empty();
-
-      // preload HISTORY_PREVIEW past actions
-      _.each(world.stats.history[id].slice(-HISTORY_PREVIEW).reverse(),
-        action => {
-          var el;
-          if (action.name == 'talk') {
-            el = world.renderAction(id, action.repr, 'talk', action.to);
-          } else {
-            el = world.renderAction(id, action.repr, 'thought');
-          }
-          $('#focused-agent-updates').append(el);
-      });
-      $('#focused-agent').fadeIn();
+      self.focusAgent(id);
     });
 
     $('body').on('click', '#focused-agent-close', function() {
       $('#focused-agent').hide();
+      $('body').css('margin-left', '1em');
     });
+  }
+
+  focusAgent(id) {
+    this.focused_agent = id;
+    $('#focused-agent-updates').empty();
+
+    // preload HISTORY_PREVIEW past actions
+    _.each(this.world.stats.history[id].slice(-HISTORY_PREVIEW).reverse(),
+      action => {
+        var el;
+        if (action.name == 'talk') {
+          el = this.world.renderAction(id, action.repr, 'talk', action.to);
+        } else {
+          el = this.world.renderAction(id, action.repr, 'thought');
+        }
+        $('#focused-agent-updates').append(el);
+    });
+    $('#focused-agent').fadeIn();
+    $('#focused-agent').css('background', this.world.agents[id].color);
+    $('body').css('margin-left', '300px');
   }
 
   showAgent(agent) {
