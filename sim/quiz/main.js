@@ -43,7 +43,7 @@ $(function() {
   })
 
   // FOR DEBUGGING
-  $("#question_name input").val("Dan");
+  $("#question_name input").val("Dan Taeyoung");
   $("#question_twitter_handle input").val("dantaeyoung");
   $("input").prop("checked", "checked");
   check_and_disable_cancelconfirm();

@@ -45,7 +45,7 @@ var world = {
 };
 
 
-var n_agents = 100;
+var n_agents = 0;
 
 // GENERATE RANDOM AGENTS //
 var convo_topics_for_random_agents =
