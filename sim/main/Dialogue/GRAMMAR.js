@@ -144,7 +144,19 @@ export default {
     "#techtalk#",
     "#awkwardtalk#",
     "#humblebrag#",
-    "#worktalk#"],
+    "#worktalk#",
+    "#namedrop#"],
+
+"nd_contact": "a good friend|friend of a friend|my friend's cousin|my cousin's friend|my friend's sibling|a family friend".split("|"),
+"nd_intro": "do an intro|introduce you".split("|"),
+"namedrop":
+  ["Have you heard of this person?",
+    "Oh, I actually know them - they’re #nd_contact#. Do you want me to #nd_intro#?"],
+//No way! That’s so cool - I know them too!
+//They’re really down-to-earth; even though they’re kinda famous, they’re really nice
+//Yeah, I was at their summer house / upstate house / fire island / hamptons / further future with them this summer / a few years back / a few months ago - you should come sometime!
+
+
 
 "wt_busy": "busy|really busy|super busy|busy as usual|so busy|busy as fuck".split("|"), 
 "wt_worktime": "this past week|this past month|the past semester|the past year|past few weeks".split("|"),
