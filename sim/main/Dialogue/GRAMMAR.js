@@ -158,16 +158,17 @@ export default {
 // such a nice bookshelf!                                                           I wish I Was doing XYZ instead
 
 "talk_-1_-1": ["#alltalk#", "#smalltalk#", "#awkwardtalk#"],
-"talk_-1__0": ["talk-10 #DEV_convo#"],
+"talk_-1__0": ["#alltalk#", "#dramatalk#"],
 "talk_-1__1": ["#h8tertalk#", "#promotalk#"],
 "talk__0_-1": ["talk0-1 #DEV_convo#"],
 "talk__0__0": ["talk00 #DEV_convo#"],
 "talk__0__1": ["talk01 #DEV_convo#"],
 "talk__1_-1": ["talk1-1 #techtalk#"],
 "talk__1__0": ["talk10 #DEV_convo#"],
-"talk__1__1": ["talk11 #DEV_convo#"],
+"talk__1__1": ["#alltalk#", "#industrytalk#"],
 
-"alltalk": 
+"alltalk": ["#sometimes_convo_connector# #alltalk_types#"],
+"alltalk_types": 
   ["#smalltalk#",
     "#promotalk#",
     "#techtalk#",
@@ -176,7 +177,47 @@ export default {
     "#worktalk#",
     "#namedrop#",
     "#apologytalk#",
-    "#interruptiontalk#"],
+    "#interruptiontalk#",
+    "#industrytalk#",
+    "#dramatalk#"],
+
+"sometimes_convo_connector": ["","","","#convo_connector#"],
+"cc_ender": 
+    ["Do you know what else is interesting?",
+      "You know -",
+      "Oh hey -",
+      "Also: ",
+      "By the way -",
+      "Speaking of which -",
+      "That reminds me -"],
+"cc_starter":     
+    ["Huh, that's interesting.",
+      "I see.",
+      "--yeah, I do.",
+      "--yeah, totally!",
+      "--I know!",
+      "Uh-huh.",
+      "Yeah."],
+     
+"convo_connector": ["#cc_ender#", "#cc_starter#", "#cc_starter# #cc_ender"],
+    
+
+"dt_colleague": "colleague co-worker co-founder collaborator friend".split(" "),
+"dt_asshole": "an asshole|a misogynist|power-hungry|a flake|a jerk".split("|"),
+"dramatalk":
+  ["Did you hear about those two over there?",
+    "Yeah, I know. Did you hear the recent gossip about them?",
+    "I think they're more than #dt_colleague.s#, if you know what I mean",
+    "So - I heard that they just broke up.",
+    "I heard that they broke up as #dt_colleague.s#, but they're still talking to each other.",
+    "Someone told me that they're kind of a #dt_asshole#",
+    "What? They're getting back together??"],
+
+
+  "it_shoptalk": "javascript library|NYT op-ed|Twitter scandal|meme|MacArthur grant|tweet|ML paper|project|opening|grant|award".split("|"),
+  "industrytalk":
+    ["Did you hear about this #it_shoptalk#?"],
+
 
   "it_time": "in a long time|in a few months|in a few years|in a decade|since I graduated from college|since high school".split("|"),
 "interruptiontalk":
@@ -192,10 +233,11 @@ export default {
     "I haven't seen you in so long!",
     "I'm so sorry I never replied to your #at_medium#.",
     "How was your #at_event#? I'm so sorry I couldn't make it.",
+    "It was okay. How was your #at_event#? I'm so sorry I couldn't make it.",
     "How was the rest of the #at_event#? Sorry I had to leave early.",
     "It was okay - I really missed you at the #at_event#.",
     "Sorry for the late #at_medium# the other day.",
-    "I'm sorry - I owe you a #at_medium#"],
+    "Yeah, I'm sorry - I owe you a #at_medium#"],
 
 
 "nd_contact": "a good friend|friend of a friend|my friend's cousin|my cousin's friend|my friend's sibling|a family friend".split("|"),
@@ -286,16 +328,19 @@ export default {
 
 
 "cryptocurrency": "Bitcoin|the blockchain|Ethereum|cryptocurrencies|that Bitcoin stuff".split("|"),
-"tt_tech_bad":  "global warming is|Facebook is|filter bubbles are|algorithms are|sentient AI will|people who don't read are|Silicon Valley is".split("|"),
+"tt_tech_bad":  "software is|global warming is|Facebook is|filter bubbles are|algorithms are|sentient AI will|people who don't read are|Silicon Valley is".split("|"),
 "tt_tragedies": "19th-century company towns|slavery|segregation|the Industrial Revolution|capitalist exploitation".split("|"),
 "tt_society_speculation": 
    ["ruining society",
      "making us estranged from each other",
-     "further alienating us from the products of our emotional labor",
+     "further alienating us from the products of our labor",
+     "just a way to monetize emotional labor",
+     "just a continuation of patriarchical capitalism, shrouded in the Trojan horse of convenience",
+     "ruining the world; Marx talked about this in Capital Vol. 3.",
      "going to ultimately create fully automated luxury gay space communism",
-     "recreate the gulags",
-     "recreate company towns",
-     "repeat the tragedies of #tt_tragedies#",
+     "recreating the gulags",
+     "recreating company towns",
+     "going to repeat the tragedies of #tt_tragedies#",
      "actually going to make the world a better place",
      "going to take over the world",
      "fundmentally the start of a future religion",
@@ -304,7 +349,9 @@ export default {
      "doomed to fail under its own contradictions"],
 "techtalk":
   ["What do you think about #cryptocurrency#", 
-    "Well, #tt_tech_bad# #tt_society_speculation."],
+    "Well, #tt_tech_bad# #tt_society_speculation.",
+    "I just invested in #cryptocurrency#",
+    "#cryptocurrency.capitalize# is #tt_society_speculation#."],
 
 
   "talk_normal": ["How's the #topics# project going?"],
@@ -312,7 +359,7 @@ export default {
   'talk_gossip_tech': ["Wow I can't believe #topics# did that in front of everybody at the office!"],
   'talk_dating': ["We broke up"],
   'talk_weather_tech': ["The cloud cover today is unprecedented"],
-  'talk_weather_feeling': ["The weather makes me want to die", "I'm kind of worried aboug global warming"],
+  'talk_weather_feeling': ["The weather makes me want to die", "I'm kind of worried about global warming"],
   'talk_insult': ["#talk_insult_variants#, #diminutive#"],
   'talk_compliment': ["#talk_compliment_variants#, #augmentive#", "Looking pretty #talk_compliment_variants#",
     "I like your smile!", "Your ideas are intriguing to me and I wish to subscribe to your newsletter."],
