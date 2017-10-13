@@ -607,7 +607,7 @@ export default {
 
  
   "pg_pretty_good": "pretty good|pretty neutral|so-so|kind of conflicting|mixed".split("|"),
-  "pg_org": "DSA|local community board",
+  "pg_org": "DSA|local community board".split("|"),
   "pg_cuomo": "Cuomo|Zuckerberg|The Rock|Letitia James|Bruce Springsteen|Nydia Velazquez|Chuck Schumer|Kirsten Gillebrand".split("|"),
   "pg_president": "president|mayor".split("|"),
 
