@@ -131,5 +131,5 @@ function run() {
   elapsedFrames++;
 }
 
-sockets.broadcastAgentUpdate();
+sockets.init();
 run();

@@ -1,6 +1,8 @@
+import $ from 'jquery';
 import _ from 'lodash';
 import io from 'socket.io-client';
 import PartyGoer from './PartyGoer';
+import confetti from './Confetti';
 
 var socket = io();
 
@@ -53,6 +55,13 @@ class Sockets {
     });
   }
 
+  init() {
+    socket.emit('broadcast', {
+      'sender': 'sim',
+      'request': 'init'
+    });
+  }
+
   onUI(data) {
     if (data.action === 'info_affinity') {
       // they know each other.
@@ -93,6 +102,17 @@ class Sockets {
 
     //  user spawned when personality quiz happens
     this.world.agents[agent.id] = agent
+
+    // celebrate the arrival of our new guest!
+    confetti.start();
+    $('.new-announcement').show();
+    $('.new-announcement').text(`${agent.id} has joined the party!`);
+    clearTimeout(this.timer);
+    this.timer = setTimeout(function() {
+      confetti.stop();
+      $('.new-announcement').hide();
+    }, 4000);
+
     this.broadcastAgentUpdate();
   }
 }
