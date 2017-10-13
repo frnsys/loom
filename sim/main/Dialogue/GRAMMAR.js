@@ -3,7 +3,7 @@ export default {
   /* HELPERS */
   //////////////
   //
-  'bathroom_activity': ["take a shit", "do number two", "take a piss", "adjust my hair", "takd some deep breaths in a toilet stall by myself", "check my phone while pretending to take a shit", "dropp some kids off at the pool", "answer the call of nature"],
+  'bathroom_activity': ["take a shit", "do number two", "take a piss", "adjust my hair", "takd some deep breaths in a toilet stall by myself", "check my phone while pretending to take a shit", "drop some kids off at the pool", "answer the call of nature"],
 
   "drinking_size": "thimble-sized large huge ample generous tiny petite".split(" "),
   "drinking_vessel": "bottle cup mug flask flagon".split(" "),
@@ -38,31 +38,63 @@ export default {
 
 
 //////////////
-/* THOUGHTS */
+/* ACTIONS */
 //////////////
 // "bathroom" / "eat" / "drink_alcohol" / "drink_water" --- from PartyGoer.js ACTIONS
-  "eat": ["I'm #kinda-really# hungry.I'm eating."],
-  'bathroom':["I gotta #bathroom_activity#."],
-  'drink_alcohol':["I'm #drinking_emotions# drinking from a #drinking_size# #drinking_vessel# of #drinking_alcohol#. .. this tastes #superlatives#"],
-  'drink_water':['I am #drinking_emotions# drinking from a #drinking_size# #drinking_vessel# of #drinking_water#.'],
   'entered':["I #entered_arrival#. I'm #kinda-really# #emotion_anticipation#."],
   'left':['The party was #kinda-really# #party_review#. I just had to #left_leave#.'],
+  'bathroom':["I gotta #bathroom_activity#."],
+  "eat": ["I'm #kinda-really# hungry.I'm eating."],
+  'gawk':["I don't really get this simulation.",
+    "Swipe right, or swipe left?",
+    "I think I've seen that person on #social_media#.",
+    "Should I be #gawk_activity#?",
+    "Our simulated selves are #kinda-really# #gawk_person_feeling#"],
+
+  "social_media": ["OKCupid", "Twitter", "Facebook"],
+  'drink_alcohol':["I'm #drinking_emotions# drinking from a #drinking_size# #drinking_vessel# of #drinking_alcohol#. .. this tastes #superlatives#"],
+  'drink_water':['Hydration is important.',
+    'I am #drinking_emotions# drinking from a #drinking_size# #drinking_vessel# of #drinking_water#.'],
+  "talk": ["#talk_normal#", '#talk_medium#', '#talk_gossip_tech#', '#talk_dating#', '#talk_weather_tech#', '#talk_weather_feeling#', '#talk_insult#', '#talk_normal_tech#'],
 
   'gawk_exclamation': 'Whoa|Cool|Hey|Hmm'.split('|'),
   'gawk_punctuation': '!|?|!!|?!|??|.'.split('|'),
   'gawk_person_feeling': 'cute|#emotion_mellowly# talking together|interesting|weird!|funny|#emotion_anticipation#-looking|sad-looking - I wish I could cheer them up.'.split('|'),
-  'gawk_activity': 'talking to each other|drinking|dancing|checking their phones|meeting new people'.split('|'),
-  'gawk':['#gawk_exclamation#, look at them.', 'So this is a simulation#gawk_punctuation#', "Why aren't they #gawk_activity# more?",
-    "Our simulated selves are #kinda-really# #gawk_person_feeling#"],
-
+  'gawk_activity': 'talking to someone new right now|drinking more|dancing more|meeting more new people'.split('|'),
 
   // this is here to kick-off talking sometimes
-  "talk": ["#talk_normal#", '#talk_medium#', '#talk_gossip_tech#', '#talk_dating#', '#talk_weather_tech#', '#talk_weather_feeling#', '#talk_insult#', '#talk_normal_tech#'],
 
 //////////////
 /* DIALOGUE */
 //////////////
-// there should be one score below for each line here
+// from Dialogue.js
+
+  // [1, -1]                              [1, 0]                                      [1, 1]
+// Highly technical & Not personal      Highly technical & Somwhat personal         Highly technical & Highly personal
+// Blockchain                           Tech company news                           Company internal arguments / nitpicky
+// Cold, matter-of-fact, robot-like                                                 // I can't believe they fild a jira ticket this way  / oxford comma
+
+// [0, -1]                              [0,0]                                       [0, 1]
+// Somewhat technical & Not personal    Somewhat technical & Somewhat personal      Somewhat technical & Highly personal
+// Weather, getting technical           Weather, with feelings
+
+// [-1, -1]                             [-1,0]                                      [-1, 1]
+// Not technical & Not personal         Not technical & Somewhat personal           Not technical & Highly personal
+// greetings                            Boy/girl friend drama                       Insults/arguments/whiny
+// smalltalk/milquetoast                                                            h8ter / sarcastic / nihilistic                                                   
+// such a nice bookshelf!                                                           I wish I Was doing XYZ instead
+
+"talk_-1_-1": ["blahblah"],
+"talk_-1__0": ["blahblah"],
+"talk_-1__0": ["blahblah"],
+"talk__0_-1": ["blahblah"],
+"talk__0__0": ["blahblah"],
+"talk__0__1": ["blahblah"],
+"talk__1_-1": ["blahblah"],
+"talk__1__0": ["blahblah"],
+"talk__1__1": ["blahblah"],
+
+
   "talk_normal": ["How's the #topics# project going?"],
   'talk_medium': ["Wow I can't believe that happened"],
   'talk_gossip_tech': ["Wow I can't believe #topics# did that in front of everybody at the office!"],
@@ -84,5 +116,29 @@ export default {
 
   'editors': "vi|neovim|emacs|spacemacs|atom|Sublime".split("|"),
   'diminutive': "bro|asshole".split("|"),
-  'augmentive': "friend|stranger|buddy|pal".split("|")
+  'augmentive': "friend|stranger|buddy|pal".split("|"),
+
+////////////
+/* TOPICS */
+////////////
+// from Questions.js
+  //
+"#fan_fic#": ["weather"],
+"#weather_convo#": ["weather"],
+"#twitter#": ["twitter"], 
+"#silicon_valley#": ["siliconva"],
+"#real_estate#": ["fdsfds"],
+"#race#": ["fdsfsa"],
+"#radical#": ["radical radical"],
+"#politics#": ["politics politics"],
+"#javascript_library#": ["javascript"],
+"#literary_theory#": ["literary_theory"],
+"#meme_theory#": ["meme_theory"],
+"#restaurants#": ["restaurants"],
+"#political_gossip#": ["political gossip"]
+
+
+
+
+
 };

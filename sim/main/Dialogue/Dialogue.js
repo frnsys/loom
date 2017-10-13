@@ -11,17 +11,15 @@ var Dialogue = {
 // scores can be floats, too, and you can have multiple topics with the same score
 Dialogue.talkScores = new DialogueScoreSpace([
   // score: [technical, personal]
-  { "score": [-1, -1], "grammar": "#talk_greetings# How's it going?" },
-  { "score": [-1,0.5], "grammar": "#talk_dating#" },
-  { "score": [-1,0.3], "grammar": "#talk_insult#" },
-  { "score": [-1,0.4], "grammar": "#talk_compliment#" },
-  { "score": [-1,  1], "grammar": "#talk_sexlife#" },
-  { "score": [ 0, -1], "grammar": "#talk_weather_tech#" },
-  { "score": [ 0,  0], "grammar": "#talk_weather_feeling#" },
-  { "score": [ 1, -1], "grammar": "#talk_geekily_tech#" },
-  { "score": [ 1,  0], "grammar": "#talk_normal_tech#" },
-  { "score": [ 1,  1], "grammar": "#talk_industry_tech#" },
-  { "score": [ 1,  1], "grammar": "#talk_gossip_tech#" }
+  { "score": [-1, -1], "grammar": "#talk_-1_-1#" },
+  { "score": [-1,  0], "grammar": "#talk_-1__0#" },
+  { "score": [-1,  1], "grammar": "#talk_-1__0#" },
+  { "score": [ 0, -1], "grammar": "#talk__0_-1#" },
+  { "score": [ 0,  0], "grammar": "#talk__0__0#" },
+  { "score": [ 0,  1], "grammar": "#talk__0__1#" },
+  { "score": [ 1, -1], "grammar": "#talk__1_-1#" },
+  { "score": [ 1,  0], "grammar": "#talk__1__0#" },
+  { "score": [ 1,  1], "grammar": "#talk__1__1#" }
 ]);
 
 
