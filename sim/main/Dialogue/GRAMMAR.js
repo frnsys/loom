@@ -243,10 +243,12 @@ export default {
 "tt_cultural": "Cultural|Post-Cultural|Post-Sokal|Intersectional|Narrative|Empathic|Virtual|Real|Technological".split("|"),
 "tt_political": "Capitalist|Socialist|Hegemonic|Democratic|Totalitarian|Anarchic|Cooperative".split("|"),
 "tt_psych": "Unconscious|Conscious|Libidinal|Cruelty|Generosity|Reflective|Death-drive|Deliberate".split("|"),
- 
+
+"tt_period": "late|early|mid|premature".split("|"),
+"tt_dynamic": "capitalism|communism|society|nature|post-humanism".split("|"),
 "tt_title": ["The #tt_order# of #tt_things#",
   "Civilization and its #tt_things#",
-  "The #tt_cultural# logic of #tt_period# #tt_dynamic#",
+  "The #tt_cultural# logic of #tt_period.capitalize# #tt_dynamic.capitalize#",
   "The #tt_political# #tt_psych#",
   "#tt_psych#-#tt_cultural# Manifesto",
   "#tt_political#-#tt_cultural# Manifesto",
