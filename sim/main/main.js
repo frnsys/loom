@@ -45,6 +45,22 @@ var world = {
 
 
 var n_agents = 100;
+
+// GENERATE RANDOM AGENTS //
+var convo_topics_for_random_agents =
+  ["#fan_fic#",
+  "#weather_convo#",
+  "#twitter#",
+  "#real_estate#",
+  "#race#",
+  "#radical#",
+  "#politics#",
+  "#javascript_library#",
+  "#literary_theory#",
+  "#meme_theory#",
+  "#restaurants#",
+  "#political_gossip#"];
+
 for(var i = 0; i < n_agents; i++) {
   var gender = _.sample(Object.keys(first_names));
   var race = _.sample(Object.keys(last_names));
@@ -65,6 +81,7 @@ for(var i = 0; i < n_agents; i++) {
     impulsiveness: _.random(10),
     topicPreference: [_.random(-1, 1), _.random(-1,1)]
   }, world);
+  agent.convo_topics = _.sample(convo_topics_for_random_agents);
   world.agents[agent.id] = agent;
 }
 
