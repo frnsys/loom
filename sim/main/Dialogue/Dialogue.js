@@ -8,6 +8,7 @@ var Dialogue = {
   grammar: tracery.createGrammar(GRAMMAR),
 };
 
+Dialogue.grammar.addModifiers(tracery.baseEngModifiers);
 // scores can be floats, too, and you can have multiple topics with the same score
 Dialogue.talkScores = new DialogueScoreSpace([
   // score: [technical, personal]
@@ -40,6 +41,8 @@ Dialogue.createDialogue = function(agent, action) {
     var topicGrammar = "";
     if("convo_topics" in agent && (_.random(0, 1, true) < 0.5)) {
       topicGrammar = _.sample(agent.convo_topics);
+      console.log("CONVO");
+      console.log(topicGrammar);
     } else {
       topicGrammar = Dialogue.talkScores.findWithThreshold(action.topic, 0.5).grammar; //TODO: not implemented
     }

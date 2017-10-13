@@ -198,7 +198,7 @@ export default {
     "I #helpers_recently# came back from a #vt_event# at a #vt_venue# in #vt_city#!",
     "There's a really small #vt_venue# in #vt_city# that I'm going to.",
     "I'm going to #vt_city# this weekend!",
-    "I've been traveling so much - #helpers_recently# came back from a #vt_event#, and then am heading to #vt_city# for a #vt_venue#"],
+    "I've been traveling so much - #helpers_recently# came back from a #vt_event#, and then am heading to #vt_city# for a #vt_venue#."],
 
 "sometimes_convo_connector": ["","","","#convo_connector#"],
 "cc_ender": 
@@ -239,7 +239,7 @@ export default {
 "theorytalk":
   ["Have you heard of the #tt_publication#, #tt_title#?",
   "I #helpers_recently# read #tt_title#.",
-  "According to #tt_title#, we're #tt_result#."],
+  "We're #tt_result#."],
 
 "dt_colleague": "colleague co-worker co-founder collaborator friend".split(" "),
 "dt_asshole": "an asshole|a misogynist|power-hungry|a flake|a jerk".split("|"),
