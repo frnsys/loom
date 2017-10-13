@@ -53,6 +53,15 @@ export default {
 'action_drink_water': ['#thought_drink_water#'],
 'action_talk': ['#thought_talk#'],
 
+
+  "pre_talk_thought": 
+    ["(What was their name again?)",
+      "(Are they even interested in what I'm saying?)",
+      "(I don't think they're that interested.)",
+      "(This is getting awkward#awk_ellipses#)",
+      "(#awk_ellipses#)",
+    "","","","","","","",""], //pad probability
+
   "ts_edgy": "edgy interesting fun sexy cool subversive".split(" "),
   "thought_sim":
   ["What is this simulation business?",
@@ -120,7 +129,7 @@ export default {
 	"drunk_state": "tipsy|slightly buzzed|buzzed|drunk|a little too drunk|pretty sober".split("|"),
 	"drunk_pacing": "too much|a lot|too fast|too little|enough|on an empty stomach".split("|"),
   "drink_proclivity": "love|like|hate|despise".split("|"),
-  "drink_gives_me_a_headache": "gives me aheadache|gives me a stomachache|makes me feel weird now|makes me socially awkward|makes me annoying|confuses me|gives me a bad time".split("|"),
+  "drink_gives_me_a_headache": "gives me a headache|gives me a stomachache|makes me feel weird now|makes me socially awkward|makes me annoying|confuses me|gives me a bad time".split("|"),
   'thought_drink_alcohol':["A #drinking_size# drink makes me #drinking_emotions#.",
     "...this tastes #superlatives#.",
     "I #drink_proclivity# #drinking_alcohol#.",
@@ -132,7 +141,7 @@ export default {
     "I'll just get this so I have something in my hands instead of standing around empty-handed."],
   'thought_drink_water':['Hydration is important.',
     'I am #drinking_emotions# drinking from a #drinking_size# #drinking_vessel# of #drinking_water#.',
-    "Hopefully this looks like a gin-and-tonic.",
+    "I should have probably have eaten dinner beforehand.",
     "God, I have such a headache right now."],
   "thought_talk": ["#talk_normal#", '#talk_medium#', '#talk_gossip_tech#', '#talk_dating#', '#talk_weather_tech#', '#talk_weather_feeling#', '#talk_insult#', '#talk_normal_tech#'],
 
@@ -190,6 +199,7 @@ export default {
     "#interruptiontalk#",
     "#industrytalk#",
     "#dramatalk#",
+    "#dramatalk#",
     "#theorytalk#",
     "#vacationtalk#",
     "#racegendertalk#"],
@@ -200,12 +210,13 @@ export default {
 "vt_city": "Mexico City|Kyoto|Hong Kong|Miami|Greece|Basel|Paris|Venice|Tokyo|Berlin|Seoul|Beijing|The Bahamas|London|Vermont|upstate|San Francisco|California|Telluriude|Sundance".split("|"),
 "vt_venue": "beach|island|mountain|neighborhood|farm|cabin".split("|"),
 "vt_adjective": "cute authentic genuine charming sweet pretty beautiful nice".split(" "),
+ "vt_howaboutyou": "How about you?|How about you? Are you going anywhere?||Did you go anywhere?|Any travel plans?".split("|"),
 "vacationtalk":
-  ["Oh, I'm going to #vt_city# for a #vt_event#.",
-    "I #helpers_recently# came back from a #vt_event# at a #vt_venue# in #vt_city#! It was so #vt_adjective#",
-    "There's a really small #vt_venue# in #vt_city# that I'm going to for a vacation.",
-    "I'm going to #vt_city# this weekend!",
-    "I've been traveling so much - #helpers_recently# came back from a #vt_event#, and then am heading to #vt_city# for a #vt_venue#."],
+  ["Oh, I'm going to #vt_city# for a #vt_event#. #vt_howaboutyou#",
+    "I #helpers_recently# came back from a #vt_event# at a #vt_venue# in #vt_city#! It was so #vt_adjective#. #vt_howaboutyou#",
+    "There's a really small #vt_venue# in #vt_city# that I'm going to for a vacation. #vt_howaboutyou#",
+    "I'm going to #vt_city# this weekend! #vt_howaboutyou#",
+    "I've been traveling so much - #helpers_recently# came back from a #vt_event#, and then am heading to #vt_city# for a #vt_venue#. #vt_howaboutyou#"],
 
 "sometimes_convo_connector": ["","","","#convo_connector#"],
 "cc_ender": 
@@ -240,13 +251,15 @@ export default {
   "#tt_psych#-#tt_cultural# Manifesto",
   "#tt_political#-#tt_cultural# Manifesto",
   "#tt_cultural# Society, #tt_psych# Society"],
+"tt_noteson": "Notes on|Mastering|Dreaming|Thinking|The End Of|The Beginning Of".split("|"),
 
 "tt_publication": "magazine book paper symposium project theory article".split(" "),
 "tt_result": "all mindless puppets|all fucked|all beings in a simulation|without free will|going to be okay in the end".split("|"),
 "tt_totally_recommend_it": "I'd totally recommend it|You should read it right now|It's so good|It's kind of #rest_adj#, but worthwhile|It's about #rp_leftist# #rp_projects#".split("|"),
 "theorytalk":
-  ["Have you heard of the #tt_publication#, '#tt_title#'?",
+  ["#pre_talk_thought# Have you heard of the #tt_publication#, '#tt_title#'?",
   "I #helpers_recently# read '#tt_title#'; #tt_totally_recommend_it#.",
+  "Oh yeah, I also picked up this compilation: '#tt_noteson# #tt_title#'.",
   "We're #tt_result#."],
 
 "dt_colleague": "colleague co-worker co-founder collaborator friend".split(" "),
@@ -257,7 +270,7 @@ export default {
     "#helpers_I_think# the two of them are more than #dt_colleague#s, if you know what I mean..",
     "Psst - I heard that they #helpers_recently# broke up.",
     "I heard that they broke up as #dt_colleague#s, but they're still talking to each other.",
-    "Someone told me they're kind of #dt_asshole#",
+    "Someone told me they're kind of #dt_asshole# and you shouldn't work with them.",
     "Those two work together?",
     "What?? They're getting back together?"],
 
@@ -291,7 +304,8 @@ export default {
     "Yeah, I'm sorry - I owe you a #at_medium#"],
 
 
-"nd_contact": "a good friend|friend of a friend|my friend's cousin|my cousin's friend|my friend's sibling|a family friend".split("|"),
+"nd_contact_1": "friend of a friend|close friend|friend|cousin|father|mother|colleague|roommate|partner".split("|"),
+"nd_contact": "#nd_contact_1#'s #nd_contact_1#",
 "nd_intro": "do an intro|introduce you".split("|"),
 "nd_chill": "chill|down-to-earth|friendly|nice|warm".split("|"),
 "nd_famous": "kinda famous|famous|kinda well-known|well-known|a big name|getting big".split("|"),
@@ -300,7 +314,7 @@ export default {
 "namedrop":
   ["Have you heard of this person?",
     "Oh, I actually know them - they’re #nd_contact#. Do you want me to #nd_intro#?",
-    "You should meet my friend! I'll #nd_intro#. They #helpers_recently# had a #at_event# in the #nd_venue# I was talking to you about.",
+    "You should meet my friend! I'll #nd_intro#. They #helpers_recently# had a #at_event# in the #nd_venue# I was talking to you about. They're super #nd_chill#.",
     "That’s so cool - I know them too!",
     "Even though they’re #nd_famous#, they’re really #nd_chill#.",
     "Yeah, I was at their #nd_locale#, sometime #wt_worktime# -- you should come sometime!"],
@@ -338,7 +352,7 @@ export default {
       "That’s great! Things have been really #hb_feels# and busy for me too - #hb_youtoo#."],
 
 
-"awk_ellipses": "..|...|.......|.........".split("|"),
+"awk_ellipses": "...|.....|.......|.........".split("|"),
 "awkwardtalk": 
   ["#uhuhuh.capitalize#, have I met you before?",
   "#uhuhuh.capitalize#, what's your name again?",
@@ -347,7 +361,7 @@ export default {
     "#awk_ellipses#I'm going to get another drink",
     "#awk_ellipses#I'm going to go to the bathroom",
     "#awk_ellipses#nice talking with you.",
-    "#awk_ellipses#"],
+    "#uhuhuh##awk_ellipses#"],
 
 
 
@@ -389,7 +403,7 @@ export default {
      "making us estranged from each other",
      "further alienating us from the products of our labor",
      "just a way to monetize emotional labor",
-     "just a continuation of patriarchical capitalism, shrouded in the Trojan horse of convenience",
+     "just a continuation of patriarchical capitalism, shrouded in the Trojan horse of #rp_capitalist# convenience",
      "ruining the world; Marx talked about this in Capital Vol. 3.",
      "going to ultimately create fully automated luxury gay space communism",
      "going to recreating the gulags",
@@ -439,8 +453,8 @@ export default {
 "fan_fic": ["#talk_fan_fic#"],
 "weather_convo": ["#talk_weather_convo#"],
 "twitter": ["#talk_twitter#"],
-"silicon_valley": ["#talk_silicon_valley#"],
 "real_estate": ["#talk_real_estate#"],
+"silicon_valley": ["#talk_silicon_valley#"],
 "race": ["#talk_race#"],
 "radical_politics": ["#talk_radical_politics#"],
 "javascript_library": ["#talk_javascript_library#"],
@@ -510,8 +524,9 @@ export default {
    ["Are you part of the Twitter boycott tonight?",
      "I just saw someone I only know through Twitter.",
      "I have, like, one #twt_kind# Twitter account#twt_maybe_another#.",
-     "I'm only on Mastodon.",
+     "I'm only on Mastodon; I quit Twitter.",
      "I don't get Twitter.",
+     "I don't use social media, let alone Twitter.",
     "I just started following @#twt_handles#."],
 "tsv_forum": "Hacker News|Ribbonfarm|Vinay Gupta|Zerohedge|a private Slack".split("|"),
 "talk_silicon_valley": 
@@ -572,10 +587,11 @@ export default {
 "mt_weaponized": "weaponized|evolved|competitive|covert|secret".split("|"),
 "mt_propaganda": "propaganda|intelligence|ideas|concepts".split("|"),
 "mt_microorganisms": "micro-organisms|viruses|bacteria|agents".split("|"),
+"mt_youknow": "you know,|well I think|literally speaking,|actually,|my pet theory is that|everyone knows|well actually,".split("|"),
 "talk_meme_theory": 
   ["Fuck memes; they're so mid-2017.",
-    "Memes are basically #mt_weaponized# #mt_propaganda#.",
-    "Memes are like #mt_weaponized# #mt_microorganisms#, evolving with attention."],
+    "#mt_youknow.capitalize# memes are basically #mt_weaponized# #mt_propaganda#.",
+    "#mt_youknow.capitalize# memes are like #mt_weaponized# #mt_microorganisms#, evolving with attention."],
 
 "rest_adj": "spicy saucy umami-ful juicy subtle pungent sour sweet bitter".split(" "),
 "rest_dish": "balut|massaman curry|khao soi|banh mi|croissant|escargot|congee|gochujang|bulgogi|tuna casserole|jello shot|veggie burger|inception pizza|artisanal broth|buddha bowl|kale chips|empanadas".split("|"),
@@ -585,7 +601,17 @@ export default {
   ["I wouldn't say I'm a 'foodie', but I really like #rest_adj# #rest_dish#.",
     "Have you heard of that #rest_cook# #rest_dish# #rest_venue#?",
     "I recently had really delicious #rest_adj# #rest_adj# dish -- think a #rest_cook# #rest_dish#, except mixed with #rest_dish#."],
-"talk_political_gossip": [""],
+
+ 
+  "pg_pretty_good": "pretty good|pretty neutral|so-so|kind of conflicting|mixed".split("|"),
+  "pg_org": "DSA|local community board",
+  "pg_cuomo": "Cuomo|Zuckerberg|The Rock|Letitia James|Bruce Springsteen|Nydia Velazquez|Chuck Schumer|Kirsten Gillebrand".split("|"),
+  "pg_president": "president|mayor".split("|"),
+
+  "talk_political_gossip": 
+  ["I hear #pg_pretty_good# things about the #pg_org#",
+  "I want to run for office, but don't know if there's space for #rp_leftist# candidates",
+  "I hear a rumor that #pg_cuomo# is planning to run for #pg_president# in 2020."],
 
 
 "#random_punctuation#": "!|?|.|;|...|???|!?".split("|")
