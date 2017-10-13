@@ -14,7 +14,6 @@ class Sockets {
       if('dataRequest' in data && data['dataRequest'] == 'agentUpdate') {
         self.broadcastAgentUpdate();
       }
-
       if ('sender' in data) {
         // if ui sends a message
         if (data['sender'] == 'ui') {
@@ -25,6 +24,15 @@ class Sockets {
         else if (data['sender'] == 'quiz') {
           self.onQuiz(data);
         }
+
+        else if (data['sender'] == 'sim') {
+          if (data['dataResponse'] == 'removeAgent') {
+            var name = data['data'];
+            if (name in world.agents) {
+              delete world.agents[name];
+            }
+          }
+        }
       }
     });
   }
@@ -34,6 +42,14 @@ class Sockets {
       'sender': 'sim',
       'dataResponse': 'agentUpdate',
       'data': _.map(this.world.agents, function(a) { return a.id; })
+    });
+  }
+
+  removeAgent(id) {
+    socket.emit('broadcast', {
+      'sender': 'sim',
+      'dataResponse': 'removeAgent',
+      'data': id
     });
   }
 

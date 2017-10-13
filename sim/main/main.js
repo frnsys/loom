@@ -44,6 +44,14 @@ var world = {
   }
 };
 
+function removeAgent(name) {
+  if (name in world.agents) {
+    delete world.agents[name];
+    sockets.removeAgent(name);
+  }
+}
+window.removeAgent = removeAgent;
+
 
 var n_agents = 0;
 
