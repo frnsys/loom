@@ -42,8 +42,6 @@ Dialogue.createDialogue = function(agent, action) {
     console.log(agent);
     if("convo_topics" in agent && (_.random(0, 1, true) < 0.5)) {
       topicGrammar = _.sample(agent.convo_topics);
-      console.log("CONVO");
-      console.log(topicGrammar);
     } else {
       topicGrammar = Dialogue.talkScores.findWithThreshold(action.topic, 0.5).grammar; //TODO: not implemented
     }

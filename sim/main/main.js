@@ -90,7 +90,7 @@ for(var i = 0; i < n_agents; i++) {
     impulsiveness: _.random(10),
     topicPreference: [_.random(-1, 1), _.random(-1,1)]
   }, world);
-  agent.convo_topics = _.sample(convo_topics_for_random_agents);
+  agent.convo_topics = [_.sample(convo_topics_for_random_agents)];
   world.agents[agent.id] = agent;
 }
 
