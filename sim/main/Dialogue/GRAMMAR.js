@@ -257,8 +257,10 @@ export default {
 
 
   "it_shoptalk": "javascript library|NYT op-ed|Twitter scandal|meme|MacArthur grant|tweet|ML paper|project|opening|grant|award".split("|"),
+  "it_topic": "machine learning|technology|sustainability|data visualization|big data|cooperative|consensus|meditation|engineering|journalism".split("|"),
+  "it_field": "literary theory|historical materialism|fashion|service design|social justice|literature|poetry|neuroscience|cognitive science|architecture|urban planning".split("|"),
   "industrytalk":
-    ["Did you hear about this #it_shoptalk#?"],
+    ["Did you hear about the recent #it_shoptalk#? It was about #it_topic#-driven #it_field#."],
 
 
   "it_time": "in a long time|in a few months|in a few years|in a decade|since I graduated from college|since high school".split("|"),
@@ -433,8 +435,7 @@ export default {
 "silicon_valley": ["#talk_silicon_valley#"],
 "real_estate": ["#talk_real_estate#"],
 "race": ["#talk_race#"],
-"radical": ["#talk_radical#"],
-"politics": ["#talk_politics#"],
+"radical_politics": ["#talk_radical_politics#"],
 "javascript_library": ["#talk_javascript_library#"],
 "literary_theory": ["#talk_literary_theory#"],
 "meme_theory": ["#talk_meme_theory#"],
@@ -478,21 +479,22 @@ export default {
   "Poe Dameron and Finn"],
 
 "ff_topic": "vidding|femmeslash|shipping".split("|"),
+"ff_format": "short story|novel|novella|long-form poem".split("|"),
 "talk_fan_fic":
-    ["Lately I've been into slash. Have you heard of #ff_topic#?",
-      "I'm writing, #uhuhuh#, a story about #ff_shippers#."],
+    ["Lately I've been into slash fiction. Have you heard of #ff_topic#?",
+      "I'm writing, #uhuhuh#, a slash #ff_format# about #ff_shippers#."],
 
 "talk_weather_convo": [""],
 "twt_handles": "darth leon rosemcgowan wendys dril deray".split(" "),
 "twt_kind": "private|super private|Weird|fanfic|jokey|finsta|corporate".split("|"),
-"twt_maybe_another": ["","","another #twt_kind# account"],
+"twt_maybe_another": ["",""," and another #twt_kind# account"],
 "talk_twitter": 
    ["Are you part of the Twitter boycott tonight?",
      "Just saw someone I only know through Twitter.",
-     "I have, like, one #twt_kind# Twitter account and #twt_maybe_another#.",
+     "I have, like, one #twt_kind# Twitter account#twt_maybe_another#.",
      "I'm only on Mastodon.",
      "I don't get Twitter.",
-    "I just started following #twt_handles#."],
+    "I just started following @#twt_handles#."],
 "tsv_forum": "Hacker News|Ribbonfarm|Vinay Gupta|Zerohedge|a private Slack".split("|"),
 "talk_silicon_valley": 
   ["Did you read that recent article about SV?",
@@ -511,17 +513,39 @@ export default {
   "I feel #re_guilty# being a gentrifier."],
 //TODO
 
-"race_brown": "black brown yellow latinx",
+"race_brown": "black brown yellow latinx".split(" "),
 "talk_race": 
   ["Why aren't there more #race_brown# folks here?"],
 
 "gender_trans": "trans|non-binary|queer".split("|"),
-"talk_gender": ["Why aren't there more #gender_trans# folx here?"],
+"talk_gender": ["Why aren't there more #gender_trans# folkx here?"],
 
-"talk_radical": [""],
-"talk_politics": [""],
-"talk_javascript_library": [""],
 
+
+"rp_leftist": "leftist|radical|emancipatory|anti-capitalist|cooperative|cooperative".split("|"),
+"rp_projects": "projects|schools|financial institutions|publications|communities|platforms|technologies ".split("|"),
+"rp_funding": "funding sources|organizational structures|business models".split("|"),
+"rp_new": "new|innovative|unconventional".split("|"),
+"rp_rhythms": "rhythms|rituals|modes of community|emotional ways|communal ways".split("|"),
+"rp_ways": "ways|methods|practices".split("|"),
+"rp_practical": "practical|viable|realistic|pragmatic".split("|"),
+"rp_capitalist": "capitalist|conscious capitalist|compromised|".split("|"),
+"rp_idealistic": "idealistic|conceptual".split("|"),
+
+  
+"talk_radical_politics":
+  ["#helpers_i_think# that #rp_leftist# #rp_projects# need to have #rp_new# #rp_ways# of doing things: #rp_leftist# #rp_funding#, or #rp_new# #rp_rhythms#.",
+  "I want to believe in #rp_leftist# #rp_projects#, but ultimately it comes down to #rp_funding#. Are #rp_new# #rp_ways# really #rp_practical#?",
+  "I used to be #rp_leftist#, now I'm more #rp_leftist#.",
+  "[thispos:#rp_leftist#]I don't care about being an #rp_idealistic# #thispos#; I just think that #rp_practical# #rp_ways# of #rp_funding# make more interesting #thispos# #rp_projects#.",
+  "Diluting ideals to try to be '#rp_practical# #rp_leftist#' makes no sense - you don't get anywhere by being complicit with #rp_capitalist# #rp_funding#."],
+
+"jl_technique": "machine learning|markov chains|neural nets|big data|cloud".split("|"),
+"jl_name_first": "beautiful|magical|wonderful|wizard|simple|expand|contract|shrink|simple".split("|"),
+"jl_name_last": "soup|stew|congee|sandwich|lib|func|package|bird|nest|case".split("|"),
+"jl_name": ["#jl_name_first.capitalize##jl_name_last.capitalize#"],
+"talk_javascript_library": 
+  ["Have you used #jl_name#? It uses #jl_technique# and #jl_technique# to create #rp_new# "],
   
 "talk_literary_theory": ["#theorytalk#"],
 
