@@ -17,6 +17,7 @@ import '~/css/reset.sass';
 import './style.sass';
 
 const MAX_AGENTS_SHOW_ALL = 4;
+const MAX_HISTORY = 200;
 
 var world = {
   agents: {},
@@ -110,6 +111,13 @@ function run() {
     if (elapsedFrames % 600 == 0 && elapsedFrames > 0) {
       var id = _.sample(Object.keys(world.agents));
       ui.focusAgent(id);
+    }
+    if (elapsedFrames % 60 == 0) {
+      // clean up history so we don't overload the DOM
+      var history_len = $('.sim .bubble').length;
+      if (history_len > MAX_HISTORY) {
+        $('.sim .bubble').slice(0, history_len - MAX_HISTORY).remove();
+      }
     }
   }
   elapsedFrames++;
