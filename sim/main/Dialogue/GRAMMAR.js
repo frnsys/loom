@@ -81,6 +81,7 @@ export default {
   "wr_that_other": "that other|my friend's other".split("|"),
   'thought_worry': 
     ["How many people do I know at this party? How many people do they know?",
+      "I barely know anyone here.",
       "I wonder if everyone here is having fun or pretending to have fun.",
       "I can't believe they're here. Do I #dw_social# or #dw_antisocial#?",
       "What's their name again? I forgot.",
@@ -569,7 +570,7 @@ export default {
 
   
 "talk_radical_politics":
-  ["#helpers_i_think# that #rp_leftist# #rp_projects# need to have #rp_new# #rp_ways# of doing things: #rp_leftist# #rp_funding#, or #rp_new# #rp_rhythms#.",
+  ["#helpers_I_think# that #rp_leftist# #rp_projects# need to have #rp_new# #rp_ways# of doing things: #rp_leftist# #rp_funding#, or #rp_new# #rp_rhythms#.",
   "I want to believe in #rp_leftist# #rp_projects#, but ultimately it comes down to #rp_funding#. Are #rp_new# #rp_ways# really #rp_practical#?",
   "I used to be #rp_leftist#, now I'm more #rp_leftist#.",
   "[thispos:#rp_leftist#]I don't care about being an #rp_idealistic# #thispos#; I just think that #rp_practical# #rp_ways# of #rp_funding# make more interesting #thispos# #rp_projects#.",
