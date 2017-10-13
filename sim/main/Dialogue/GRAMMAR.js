@@ -138,13 +138,54 @@ export default {
 "talk__1__0": ["talk10 #DEV_convo#"],
 "talk__1__1": ["talk11 #DEV_convo#"],
 
-"alltalk": ["#smalltalk#", "#promotalk#", "#techtalk#", "#awkwardtalk#"],
+"alltalk": 
+  ["#smalltalk#",
+    "#promotalk#",
+    "#techtalk#",
+    "#awkwardtalk#",
+    "#humblebrag#",
+    "#worktalk#"],
 
+"wt_busy": "busy|really busy|super busy|busy as usual|so busy|busy as fuck".split("|"), 
+"wt_worktime": "this past week|this past month|the past semester|the past year|past few weeks".split("|"),
+"worktalk": 
+  ["What do you do?",
+    "What do you work on?",
+    "What do you work on lately?",
+    "Where do you work?",
+    "How's your work going?",
+    "Work is #hb_feels# and going great!",
+    "I'm super #wt_busy#, and work is #hb_feels#, so it's going great!",
+    "#wt_worktime.capitalize# has been #wt_busy# -- #hb_youtoo#.",
+    "Things are #wt_busy#, but in a good way",
+    "I rarely see friends anymore because I'm #wt_busy#",
+    "Keeping #wt_busy#, which is good, right?",
+    "Nice to see you keeping busy.",
+    "I'm kind of in a transitional period right now."],
+
+
+
+"hb_role": "CEO co-founder head lead".split(" "),
+"hb_org": "non-profit organization team program".split(" "),
+"hb_feels": "wild exciting crazy awesome challenging productive interesting".split(" "),
+"hb_youtoo": "I'm sure you know how it is|you probably are too|you know what I mean|you're probably in a similar position".split("|"),
+"humblebrag": 
+    ["I have so many projects going on, I don’t know what to do.",
+      "I just hired someone, and it’s so interesting managing people, you know?",
+      "I just started at this thing I’m totally unqualified for.",
+      "I’m just started being the #hb_role# of a #hb_org#, and it's really #hb_feels#",
+      "That’s great! Things have been really #hb_feels# and busy for me too - #hb_youtoo#."],
+
+
+"awk_ellipses": "..|...|.......|.........".split("|"),
 "awkwardtalk": 
   ["#uhuhuh.capitalize#, have I met you before?",
   "#uhuhuh.capitalize#, what's your name again?",
     "Hi (mumble), it's good to see you again.",
-    "Hi (mumble), nice to, #uhuhuh#, see, #uhuhuh#, meet you, I mean, again."],
+    "Nice to, #uhuhuh#, see, #uhuhuh#, meet you again.",
+    "#awk_ellipses#I'm going to get another drink",
+    "#awk_ellipses#I'm going to go to the bathroom"],
+
 
 
 "polite_interesting": "interesting|nice|cute|funny|cozy|charming".split("|"),
