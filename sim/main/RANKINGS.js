@@ -16,5 +16,11 @@ export default [{
   rank: h => {
     return _.where(h, {name: 'drink_water'}).length;
   }
+}, {
+  desc: r => `${ACTIONS['bathroom'].emoji[0]} Went to the bathroom the most: ${r.max.id}`,
+  rank: h => {
+    return _.where(h, {name: 'bathroom'}).length;
+  }
+
 }];
 
