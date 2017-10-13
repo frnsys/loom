@@ -393,7 +393,8 @@ export default {
 	"Can I tell you about my #personal_project#?",
 	"That reminds me of the #personal_project# I #helpers_recently# started! Let me tell you about it.",
 	"You know, my #personal_project# could really use a fresh pair of eyes.",
-	"I'm working on the #startup_model# for #personal_project#s. We're in stealth mode."],
+  "The project is like a #startup_model#, but combined with a #startup_model#. Want to hear more?",
+	"I'm working on a #startup_model# for #personal_project#s. We're in stealth mode."],
 
 
 "cryptocurrency": "Bitcoin|the blockchain|Ethereum|cryptocurrency|that Bitcoin stuff".split("|"),
@@ -612,8 +613,8 @@ export default {
   "pg_president": "president|mayor".split("|"),
 
   "talk_political_gossip": 
-  ["I hear #pg_pretty_good# things about the #pg_org#",
-  "I want to run for office, but don't know if there's space for #rp_leftist# candidates",
+  ["I hear #pg_pretty_good# things about the #pg_org#.",
+  "I want to run for office, but don't know if there's space for #rp_leftist# candidates.",
   "I hear a rumor that #pg_cuomo# is planning to run for #pg_president# in 2020."],
 
 
