@@ -186,8 +186,10 @@ export default {
     "#industrytalk#",
     "#dramatalk#",
     "#theorytalk#",
-    "#vacationtalk#"],
+    "#vacationtalk#",
+    "#racegendertalk#"],
 
+"racegendertalk": ["#talk_race#", "#talk_gender#"],
 
 "vt_event": "wedding|retreat|gathering|party|festival|conference|vacation".split("|"),
 "vt_city": "Mexico City|Kyoto|Hong Kong|Miami|Greece|Basel|Paris|Venice|Tokyo|Berlin|Seoul|Beijing|The Bahamas|London|Vermont|upstate|San Francisco|California|Telluriude|Sundance".split("|"),
@@ -196,7 +198,7 @@ export default {
 "vacationtalk":
   ["Oh, I'm going to #vt_city# for a #vt_event#.",
     "I #helpers_recently# came back from a #vt_event# at a #vt_venue# in #vt_city#! It was so #vt_adjective#",
-    "There's a really small #vt_venue# in #vt_city# that I'm going to.",
+    "There's a really small #vt_venue# in #vt_city# that I'm going to for a vacation.",
     "I'm going to #vt_city# this weekend!",
     "I've been traveling so much - #helpers_recently# came back from a #vt_event#, and then am heading to #vt_city# for a #vt_venue#."],
 
@@ -220,8 +222,8 @@ export default {
      
 "convo_connector": ["#cc_ender#", "#cc_starter#", "#cc_starter# #cc_ender#"],
 
-"tt_order": "Order|Logic|Rhythm|Techne".split("|"),
-"tt_things": "Things|The World|Paradoxes|Silences|Methods|Reasons|Telos".split("|"),
+"tt_order": "Process|Structure|Order|Logic|Rhythm|Techne|Civilization|Grammar".split("|"),
+"tt_things": "Things|Worlds|Games|Things|Actors|Networks|Cities|Paradoxes|Silences|Methods|Reasons|Telos".split("|"),
 "tt_cultural": "Cultural|Post-Cultural|Post-Sokal|Intersectional|Narrative|Empathic|Virtual|Real|Technological".split("|"),
 "tt_political": "Capitalist|Socialist|Hegemonic|Democratic|Totalitarian|Anarchic|Cooperative".split("|"),
 "tt_psych": "Unconscious|Conscious|Libidinal|Cruelty|Generosity|Reflective|Death-drive|Deliberate".split("|"),
@@ -246,7 +248,7 @@ export default {
 "dramatalk":
   ["Did you hear about those two over there?",
     "Yeah, I know. Did you hear the recent gossip about those two?",
-    "#helpers_I_think# the two of them are more than #dt_colleague#s, if you know what I mean",
+    "#helpers_I_think# the two of them are more than #dt_colleague#s, if you know what I mean..",
     "Psst - I heard that they #helpers_recently# broke up.",
     "I heard that they broke up as #dt_colleague#s, but they're still talking to each other.",
     "Someone told me they're kind of #dt_asshole#",
@@ -501,16 +503,32 @@ export default {
   "I read this cool article from #tsv_forum#.",
   "Software is eating the world, whether we like it or not."
   ],
-"talk_real_estate": [""],
-"talk_race": [""],
+
+"re_condo": "condo apartment house".split(" "),
+"re_guilty": "guilty neutral helpless concerned".split(" "),
+"talk_real_estate":
+  ["I wish I could buy a #re_condo#.",
+  "I feel #re_guilty# being a gentrifier."],
+//TODO
+
+"race_brown": "black brown yellow latinx",
+"talk_race": 
+  ["Why aren't there more #race_brown# folks here?"],
+
+"gender_trans": "trans|non-binary|queer".split("|"),
+"talk_gender": ["Why aren't there more #gender_trans# folx here?"],
+
 "talk_radical": [""],
 "talk_politics": [""],
 "talk_javascript_library": [""],
-"talk_literary_theory": [""],
+
+  
+"talk_literary_theory": ["#theorytalk#"],
+
 "talk_meme_theory": 
   ["Fuck memes; they're so mid-2017.",
     "Memes are basically weaponized propaganda.",
-    "Memes are like microorganisms, volving with attention."],
+    "Memes are like microorganisms, evolving with attention."],
 
 "rest_adj": "spicy saucy umami-ful juicy subtle pungent sour sweet bitter".split(" "),
 "rest_dish": "balut|massaman curry|khao soi|banh mi|croissant|escargot|congee|gochujang|bulgogi|tuna casserole|jello shot|veggie burger|inception pizza|artisanal broth|buddha bowl|kale chips|empanadas".split("|"),

@@ -53,7 +53,7 @@ function removeAgent(name) {
 window.removeAgent = removeAgent;
 
 
-var n_agents = 0;
+var n_agents = 30;
 
 // GENERATE RANDOM AGENTS //
 var convo_topics_for_random_agents =
