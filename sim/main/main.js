@@ -76,6 +76,7 @@ var sockets = new Sockets(world);
 var elapsedFrames = 0;
 function run() {
   requestAnimationFrame(run);
+  // ~30fps
   if (elapsedFrames % 2 == 0) {
     _.each(world.agents, a => {
       var action = a.update();
@@ -89,8 +90,12 @@ function run() {
     if (elapsedFrames % 54000 == 0 && elapsedFrames > 0) {
       world.stats.update();
     }
+    if (elapsedFrames % 600 == 0 && elapsedFrames > 0) {
+      var id = _.sample(Object.keys(world.agents));
+      ui.focusAgent(id);
+    }
   }
-  elapsedFrames ++;
+  elapsedFrames++;
 }
 
 sockets.broadcastAgentUpdate();
