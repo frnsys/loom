@@ -3,14 +3,14 @@ export default {
   /* HELPERS */
   //////////////
   //
-  'bathroom_activity': ["take a shit", "do number two", "take a piss", "adjust my hair", "takd some deep breaths in a toilet stall by myself", "check my phone while pretending to take a shit", "drop some kids off at the pool", "answer the call of nature"],
+  'bathroom_activity': ["take a shit", "do number two", "take a piss", "adjust my hair", "take some deep breaths in a toilet stall by myself", "check my phone while pretending to take a shit", "drop some kids off at the pool", "answer the call of nature"],
 
-  "drinking_size": "thimble-sized large huge ample generous tiny petite".split(" "),
+  "drinking_size": "thimble-sized large huge good-sized generous tiny small".split(" "),
   "drinking_vessel": "bottle cup mug flask flagon".split(" "),
   "drinking_alcohol": "wine tequila beer cider".split(" "),
-  "drinking_emotions": ["#emotion_mellowly#"],
+  "drinking_emotions": ["#emotion_mellow#"],
 
-  "drinking_water": ["smartwater", "tapwater", "#seltzer#"],
+  "drinking_water": ["smartwater", "tapwater", "#seltzer#", "water"],
   "seltzer": ["la croix", "perrier"],
 
   "entered_arrival": ["just got here", "arrived", "am finally at the party"],
@@ -19,7 +19,7 @@ export default {
   'left_leave': ['do an Irish goodbye', 'head home', 'go to my next party of the night', 'take a walk by myself', 'grab a bite to eat', 'escape from society'],
 
   'animal': ['panda','fox','capybara','iguana'],
-  "emotion_mellowly" : "thoughtfully sadly slowly reflectively morosely gently quietly calmly tenderly".split(" "),
+  "emotion_mellow" : "thoughtful sad slow reflective morose gentle quiet calm tender".split(" "),
   "emotion_upbeat" : "happy sad reflective morose proud".split(" "),
   "emotion_anticipation" : "nervous excited curious hesitant annoyed grumpy tired".split(" "),
   "kinda-really": ["kinda", "somewhat", "maybe", "just a little", "very", "ridiculously", "totally", "really"],
@@ -41,25 +41,69 @@ export default {
 /* ACTIONS */
 //////////////
 // "bathroom" / "eat" / "drink_alcohol" / "drink_water" --- from PartyGoer.js ACTIONS
-  'entered':["I #entered_arrival#. I'm #kinda-really# #emotion_anticipation#."],
-  'left':['The party was #kinda-really# #party_review#. I just had to #left_leave#.'],
-  'bathroom':["I gotta #bathroom_activity#."],
-  "eat": ["I'm #kinda-really# hungry.I'm eating."],
-  'gawk':["I don't really get this simulation.",
+'action_entered': ['#dialogue_entered#'],
+'action_left': ['#dialogue_left#'],
+'action_bathroom': ['#dialogue_bathroom#'],
+'action_eat': ['#dialogue_eat#'],
+'action_gawk': ['#dialogue_gawk#', "#dialogue_worry#"],
+'action_social_me#dia#': ['#dialogue_social_media#'],
+'action_drink_alcohol': ['#dialogue_drink_alcohol#'],
+'action_drink_water': ['#dialogue_drink_water#'],
+'action_talk': ['#dialogue_talk#'],
+
+  'dialogue_worry': 
+    ["How many people do I know at this party? How many people do they know?",
+      "I wonder if everyone here is having fun or pretending to have fun.",
+      "I can't believe they're here. Do I #dw_social# or #dw_antisocial#?",
+      "What's their name again? I forgot.",
+      "Was it a bad idea to have invited them?",
+      "Oh, I know that person on Twitter."],
+
+  "dw_social": ["say hello", "go over there and say hi", "nod my head", "introduce myself to them"],
+  "dw_antisocial": ["pretend I didn't see them", "avoid them and leave", "pretend to be friendly?"],
+  
+  'dialogue_entered':["I #entered_arrival#. I'm #kinda-really# #emotion_anticipation#."],
+  'dialogue_left':['The party was #kinda-really# #party_review#. I just had to #left_leave#.'],
+  'dialogue_bathroom':["I have to #bathroom_activity#.",
+    "Maybe I should come back and avoid the bathroom line.",
+    "Should I hold it until I get home?",
+    "Where's the bathroom?",
+    "Can't tell if this is a fart or something more."],
+  "dialogue_eat": ["I'm #kinda-really# hungry.",
+    "The best thing to do at parties is to eat.",
+    "The snacks are better at Chelsea openings.",
+    "Am I eating too much?",
+    "I should have probably have eaten dinner beforehand."],
+  'dialogue_gawk':["I don't really understand this simulation.",
     "Swipe right, or swipe left?",
     "I think I've seen that person on #social_media#.",
     "Should I be #gawk_activity#?",
     "Our simulated selves are #kinda-really# #gawk_person_feeling#"],
 
-  "social_media": ["OKCupid", "Twitter", "Facebook"],
-  'drink_alcohol':["I'm #drinking_emotions# drinking from a #drinking_size# #drinking_vessel# of #drinking_alcohol#. .. this tastes #superlatives#"],
-  'drink_water':['Hydration is important.',
-    'I am #drinking_emotions# drinking from a #drinking_size# #drinking_vessel# of #drinking_water#.'],
-  "talk": ["#talk_normal#", '#talk_medium#', '#talk_gossip_tech#', '#talk_dating#', '#talk_weather_tech#', '#talk_weather_feeling#', '#talk_insult#', '#talk_normal_tech#'],
+  "social_media": ["OKCupid", "Twitter", "Facebook", "The New Inquiry website"],
+	"drunk_state": "tipsy|slightly buzzed|buzzed|drunk|a little too drunk|pretty sober".split("|"),
+	"drunk_pacing": "too much|a lot|too fast|too little|enough|on an empty stomach".split("|"),
+  "drink_proclivity": "love|like|hate|despise".split("|"),
+  'dialogue_drink_alcohol':["A #drinking_size# drink makes me #drinking_emotions#.",
+    "...this tastes #superlatives#.",
+    "I #drink_proclivity# #drinking_alcohol#.",
+    "I just realized I #drink_proclivity# #drinking_alcohol#.",
+    "I think #drinking_alcohol# just gives me a headache. Why do I do this to myself?",
+    "Am I drinking #drunk_pacing#?",
+    "I think I'm #drunk_state#.",
+    "Should I have another #drinking_alcohol#? I'm #drunk_state#.",
+    "I'll just get this so I have something in my hands instead of standing around empty-handed."],
+  'dialogue_drink_water':['Hydration is important.',
+    'I am #drinking_emotions# drinking from a #drinking_size# #drinking_vessel# of #drinking_water#.',
+    "Hopefully this looks like a gin-and-tonic.",
+    "God, I have such a headache right now."],
+  "dialogue_talk": ["#talk_normal#", '#talk_medium#', '#talk_gossip_tech#', '#talk_dating#', '#talk_weather_tech#', '#talk_weather_feeling#', '#talk_insult#', '#talk_normal_tech#'],
+
+  
 
   'gawk_exclamation': 'Whoa|Cool|Hey|Hmm'.split('|'),
   'gawk_punctuation': '!|?|!!|?!|??|.'.split('|'),
-  'gawk_person_feeling': 'cute|#emotion_mellowly# talking together|interesting|weird!|funny|#emotion_anticipation#-looking|sad-looking - I wish I could cheer them up.'.split('|'),
+  'gawk_person_feeling': 'cute|talking together|interesting|weird!|funny|#emotion_anticipation#-looking|sad-looking - I wish I could cheer them up.'.split('|'),
   'gawk_activity': 'talking to someone new right now|drinking more|dancing more|meeting more new people'.split('|'),
 
   // this is here to kick-off talking sometimes
@@ -84,15 +128,72 @@ export default {
 // smalltalk/milquetoast                                                            h8ter / sarcastic / nihilistic                                                   
 // such a nice bookshelf!                                                           I wish I Was doing XYZ instead
 
-"talk_-1_-1": ["blahblah"],
-"talk_-1__0": ["blahblah"],
-"talk_-1__0": ["blahblah"],
-"talk__0_-1": ["blahblah"],
-"talk__0__0": ["blahblah"],
-"talk__0__1": ["blahblah"],
-"talk__1_-1": ["blahblah"],
-"talk__1__0": ["blahblah"],
-"talk__1__1": ["blahblah"],
+"talk_-1_-1": ["#alltalk#", "#smalltalk#", "#awkwardtalk#"],
+"talk_-1__0": ["talk-10 #DEV_convo#"],
+"talk_-1__1": ["#h8tertalk#", "#promotalk#"],
+"talk__0_-1": ["talk0-1 #DEV_convo#"],
+"talk__0__0": ["talk00 #DEV_convo#"],
+"talk__0__1": ["talk01 #DEV_convo#"],
+"talk__1_-1": ["talk1-1 #techtalk#"],
+"talk__1__0": ["talk10 #DEV_convo#"],
+"talk__1__1": ["talk11 #DEV_convo#"],
+
+"alltalk": ["#smalltalk#", "#promotalk#", "#techtalk#", "#awkwardtalk#"],
+
+"awkwardtalk": 
+  ["#uhuhuh.capitalize#, have I met you before?",
+  "#uhuhuh.capitalize#, what's your name again?",
+    "Hi (mumble), it's good to see you again.",
+    "Hi (mumble), nice to, #uhuhuh#, see, #uhuhuh#, meet you, I mean, again."],
+
+
+"polite_interesting": "interesting|nice|cute|funny|cozy|charming".split("|"),
+"weather_adj": "weird|warm|chilly".split("|"),
+
+"st_location": "New York|Brooklyn|Bed-Stuy|Bushwick|Greenpoint|the United States".split("|"),
+"uhuhuh": ["uh", "er", "um", "uhh", "eh", "errr", "umm"],
+"smalltalk": 
+   ["This is such an #polite_interesting# office, isn't it?",
+     "The weather's so #weather_adj#, right?",
+     "#uhuhuh.capitalize#, #uhuhuh#,  where do you live?",
+     "#uhuhuh.capitalize#, how long have you lived in #st_location#?",
+     "Who do you know here?"],
+
+"h8tertalk":
+  ["I don't get this party. Do you?",
+    "I have better things to do with my Friday night. What about you?",
+    "Ugh. This is such a scene, don't you think?"],
+
+"personal_project": "startup|firm|creative practice|meditation practice|non-profit|publication|gallery show|residency|teaching gig|grad program",
+"startup_model": "Uber|AirBnB|Facebook|Amazon Prime|coffeeshop|WeWork|Apple|Museum|Tinder".split("|"),
+"promotalk": 
+	["Oh, that's soo interesting.",
+	"Can I tell you about my #personal_project#?",
+	"That reminds me of the #personal_project# I just started! Let me tell you about it.",
+	"You know, my #personal_project# could really use a fresh pair of eyes.",
+	"I'm working on the #startup_model# for #personal_project#s. We're in stealth mode."],
+
+
+"cryptocurrency": "Bitcoin|the blockchain|Ethereum|cryptocurrencies|that Bitcoin stuff".split("|"),
+"tt_tech_bad":  "global warming is|Facebook is|filter bubbles are|algorithms are|sentient AI will|people who don't read are|Silicon Valley is".split("|"),
+"tt_tragedies": "19th-century company towns|slavery|segregation|the Industrial Revolution|capitalist exploitation".split("|"),
+"tt_society_speculation": 
+   ["ruining society",
+     "making us estranged from each other",
+     "further alienating us from the products of our emotional labor",
+     "going to ultimately create fully automated luxury gay space communism",
+     "recreate the gulags",
+     "recreate company towns",
+     "repeat the tragedies of #tt_tragedies#",
+     "actually going to make the world a better place",
+     "going to take over the world",
+     "fundmentally the start of a future religion",
+     "already replaced our governments, like it our not",
+     "ultimately emancipatory, even though it doesn't seem like it",
+     "doomed to fail under its own contradictions"],
+"techtalk":
+  ["What do you think about #cryptocurrency#", 
+    "Well, #tt_tech_bad# #tt_society_speculation."],
 
 
   "talk_normal": ["How's the #topics# project going?"],
@@ -123,22 +224,23 @@ export default {
 ////////////
 // from Questions.js
   //
-"#fan_fic#": ["weather"],
-"#weather_convo#": ["weather"],
-"#twitter#": ["twitter"], 
-"#silicon_valley#": ["siliconva"],
-"#real_estate#": ["fdsfds"],
-"#race#": ["fdsfsa"],
-"#radical#": ["radical radical"],
-"#politics#": ["politics politics"],
-"#javascript_library#": ["javascript"],
-"#literary_theory#": ["literary_theory"],
-"#meme_theory#": ["meme_theory"],
-"#restaurants#": ["restaurants"],
-"#political_gossip#": ["political gossip"]
+"fan_fic": ["weather"],
+"weather_convo": ["weather"],
+"twitter": ["twitter"], 
+"silicon_valley": ["siliconva"],
+"real_estate": ["fdsfds"],
+"race": ["fdsfsa"],
+"radical": ["radical radical"],
+"politics": ["politics politics"],
+"javascript_library": ["javascript"],
+"literary_theory": ["literary_theory"],
+"meme_theory": ["meme_theory"],
+"restaurants": ["restaurants"],
+"political_gossip": ["political gossip"],
 
 
+"DEV_convo": ["dev deve dev"],
 
-
+"#random_punctuation#": "!|?|.|;|...|???|!?".split("|")
 
 };

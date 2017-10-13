@@ -41,7 +41,7 @@ Dialogue.createDialogue = function(agent, action) {
     if("convo_topics" in agent && (_.random(0, 1, true) < 0.5)) {
       topicGrammar = _.sample(agent.convo_topics);
     } else {
-      topicGrammar = Dialogue.talkScores.findWithThreshold(action.topic, 0.5).grammar;
+      topicGrammar = Dialogue.talkScores.findWithThreshold(action.topic, 0.5).grammar; //TODO: not implemented
     }
     return Dialogue.grammar.flatten(topicGrammar);
   }
@@ -50,7 +50,7 @@ Dialogue.createDialogue = function(agent, action) {
 Dialogue.createThought = function(agent, action) {
   // bathroom / eat / drink_alcohol / drink_water / bathroom - constants from PartyGoer.ACTIONS
   if(action.name) {
-    return `<h1 class="action-emoji">${action.emoji}</h1>` + " (" + Dialogue.grammar.flatten("#" + action.name + "#") + ")";
+    return `<h1 class="action-emoji">${action.emoji}</h1>` + " (" + Dialogue.grammar.flatten("#action_" + action.name + "#") + ")";
   }
 };
 
