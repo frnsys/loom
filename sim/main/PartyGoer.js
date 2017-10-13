@@ -36,6 +36,8 @@ class PartyGoer extends Agent {
     this.topicPreference = state.topicPreference;
     this.talkingTo = null;
     this.color = randomColor();
+    this.recentUtterances = [];
+    this.recentThoughts = [];
 
     this.baseline = {
       sociability: state.sociability
@@ -189,9 +191,24 @@ class PartyGoer extends Agent {
   render(action) {
     if (action.name == 'talk') {
       action.repr = Dialogue.createDialogue(this, action);
+      while (action.repr in this.recentUtterances) {
+        action.repr = Dialogue.createDialogue(this, action);
+      }
+      this.recentUtterances.push(action.repr);
+      while (this.recentUtterances.length > 5) {
+        this.recentUtterances.shift();
+      }
       this.world.render(this.id, action.repr, 'talk', action.to);
+
     } else {
       action.repr = Dialogue.createThought(this, action);
+      while (action.repr in this.recentThoughts) {
+        action.repr = Dialogue.createDialogue(this, action);
+      }
+      this.recentThoughts.push(action.repr);
+      while (this.recentThoughts.length > 5) {
+        this.recentThoughts.shift();
+      }
       this.world.render(this.id, action.repr, 'thought');
     }
   }

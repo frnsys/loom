@@ -17,6 +17,7 @@ import '~/css/reset.sass';
 import './style.sass';
 
 const MAX_AGENTS_SHOW_ALL = 4;
+const MAX_HISTORY = 200;
 
 var world = {
   agents: {},
@@ -43,10 +44,19 @@ var world = {
   }
 };
 
+function removeAgent(name) {
+  if (name in world.agents) {
+    delete world.agents[name];
+    sockets.removeAgent(name);
+  }
+}
+window.removeAgent = removeAgent;
 
 
-// GENERATE RANDOM AGENTS // 
-var convo_topics_for_random_agents = 
+var n_agents = 0;
+
+// GENERATE RANDOM AGENTS //
+var convo_topics_for_random_agents =
   ["#fan_fic#",
   "#weather_convo#",
   "#twitter#",
@@ -60,7 +70,6 @@ var convo_topics_for_random_agents =
   "#restaurants#",
   "#political_gossip#"];
 
-var n_agents = 5;
 for(var i = 0; i < n_agents; i++) {
   var gender = _.sample(Object.keys(first_names));
   var race = _.sample(Object.keys(last_names));
@@ -110,6 +119,13 @@ function run() {
     if (elapsedFrames % 600 == 0 && elapsedFrames > 0) {
       var id = _.sample(Object.keys(world.agents));
       ui.focusAgent(id);
+    }
+    if (elapsedFrames % 60 == 0) {
+      // clean up history so we don't overload the DOM
+      var history_len = $('.sim .bubble').length;
+      if (history_len > MAX_HISTORY) {
+        $('.sim .bubble').slice(0, history_len - MAX_HISTORY).remove();
+      }
     }
   }
   elapsedFrames++;

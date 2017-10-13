@@ -37,6 +37,12 @@ app.get('/quiz', function(req, res){
 
 
 if (require.main === module) {
+  var Datastore = require('nedb')
+    , db = new Datastore({ filename: 'quiz_results.db', autoload: true });
+  db.count({}, function(err, count) {
+    console.log(`${count} saved agents`);
+  });
+
   var stream = fs.createWriteStream("simulation.log");
   stream.once('open', function(fd) {
     var server = http.createServer(app);
@@ -55,6 +61,14 @@ if (require.main === module) {
     io.on('connection', (socket) => {
       console.log('connect ' + socket.id);
 
+      db.find({}, function(err, docs) {
+        console.log('sending saved agents to new connection');
+        for (var i=0; i<docs.length; i++) {
+          socket.broadcast.emit('message', docs[i]);
+          socket.emit('message', docs[i]);
+        }
+      });
+
       socket.on('echo', function (data) {
         console.log("echoing back data!");
         socket.emit('message', data);
@@ -64,8 +78,13 @@ if (require.main === module) {
         // broadcasting data
         socket.broadcast.emit('message', data);
         stream.write(`${JSON.stringify(data)}\n`);
-      });
 
+        if (data.sender == 'quiz') {
+          db.insert(data, function(err, newDoc) {
+            console.log(`saved: ${data.quizResults.name}`);
+          });
+        }
+      });
 
       socket.on('disconnect', () => console.log('disconnect ' + socket.id));
 
