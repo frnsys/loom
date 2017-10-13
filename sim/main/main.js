@@ -44,7 +44,7 @@ var world = {
 };
 
 
-var n_agents = 5;
+var n_agents = 100;
 for(var i = 0; i < n_agents; i++) {
   var gender = _.sample(Object.keys(first_names));
   var race = _.sample(Object.keys(last_names));
