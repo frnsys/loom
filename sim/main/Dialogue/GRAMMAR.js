@@ -41,40 +41,69 @@ export default {
 /* ACTIONS */
 //////////////
 // "bathroom" / "eat" / "drink_alcohol" / "drink_water" --- from PartyGoer.js ACTIONS
-'action_entered': ['#dialogue_entered#'],
-'action_left': ['#dialogue_left#'],
-'action_bathroom': ['#dialogue_bathroom#'],
-'action_eat': ['#dialogue_eat#'],
-'action_gawk': ['#dialogue_gawk#', "#dialogue_worry#"],
-'action_social_me#dia#': ['#dialogue_social_media#'],
-'action_drink_alcohol': ['#dialogue_drink_alcohol#'],
-'action_drink_water': ['#dialogue_drink_water#'],
-'action_talk': ['#dialogue_talk#'],
+'action_entered': ['#thought_entered#'],
+'action_left': ['#thought_left#'],
+'action_bathroom': ['#thought_bathroom#'],
+'action_eat': ['#thought_eat#'],
+'action_gawk': ['#thought_gawk#', "#thought_worry#", "#thought_deep_inner#", "#thought_sim#"],
+'action_social_me#dia#': ['#thought_social_media#'],
+'action_drink_alcohol': ['#thought_drink_alcohol#'],
+'action_drink_water': ['#thought_drink_water#'],
+'action_talk': ['#thought_talk#'],
 
-  'dialogue_worry': 
+  "ts_edgy": "edgy interesting fun sexy cool subversive".split(" "),
+  "thought_sim":
+  ["What is this simulation business?",
+    "I fundamentally disagree with the tone of this simulation.",
+    "Is this simulation trying to be '#ts_edgy#' or what?",
+    "Is this just a bunch of simulated dialogue? I don't get it.",
+    "What's the relationship of the party to the simulation?",
+    "There's too much text in this simulation.",
+    "This isn't what I thought when I heard it was a 'simparty'.",
+    "I have no idea what's going on in this simulation.",
+    "How does the questionnaire relate to the simulation?",
+    "Oh funny, I see they even meta-reference the simulation in the simulation. Ha-ha.",
+    "I see they make a meta-meta reference to a meta-reference of the simulation in the simulation. Ha-ha-ha."],
+
+
+    
+  'thought_worry': 
     ["How many people do I know at this party? How many people do they know?",
       "I wonder if everyone here is having fun or pretending to have fun.",
       "I can't believe they're here. Do I #dw_social# or #dw_antisocial#?",
       "What's their name again? I forgot.",
       "Was it a bad idea to have invited them?",
-      "Oh, I know that person on Twitter."],
+      "Oh, I know that person on Twitter.",
+      "Should I be talking to more people?",
+      "Should go to that other #at_event# tonight?"],
+
+  "ddi_action": "flirting with|joking with|really listening to|just talking over|giving a sales pitch".split("|"),
+  "ddi_cute": "attractive|cute|charming|smart|sweet|harmless|interesting|nice".split("|"),
+  "thought_deep_inner":
+    ["Are they #ddi_action# me?",
+      "Hmm. I think I've decided that they're kind of #ddi_cute#",
+      "I think they'd be a cool new friend.",
+      "I think they'd be an interesting collaborator.",
+      "This is kind of a boring conversation. I hope they don't notice that I'm zoning out.",
+      "This is interesting, but I'm so tired."],
+
 
   "dw_social": ["say hello", "go over there and say hi", "nod my head", "introduce myself to them"],
   "dw_antisocial": ["pretend I didn't see them", "avoid them and leave", "pretend to be friendly?"],
   
-  'dialogue_entered':["I #entered_arrival#. I'm #kinda-really# #emotion_anticipation#."],
-  'dialogue_left':['The party was #kinda-really# #party_review#. I just had to #left_leave#.'],
-  'dialogue_bathroom':["I have to #bathroom_activity#.",
+  'thought_entered':["I #entered_arrival#. I'm #kinda-really# #emotion_anticipation#."],
+  'thought_left':['The party was #kinda-really# #party_review#. I just had to #left_leave#.'],
+  'thought_bathroom':["I have to #bathroom_activity#.",
     "Maybe I should come back and avoid the bathroom line.",
     "Should I hold it until I get home?",
     "Where's the bathroom?",
     "Can't tell if this is a fart or something more."],
-  "dialogue_eat": ["I'm #kinda-really# hungry.",
+  "thought_eat": ["I'm #kinda-really# hungry.",
     "The best thing to do at parties is to eat.",
     "The snacks are better at Chelsea openings.",
     "Am I eating too much?",
     "I should have probably have eaten dinner beforehand."],
-  'dialogue_gawk':["I don't really understand this simulation.",
+  'thought_gawk':["I don't really understand this simulation.",
     "Swipe right, or swipe left?",
     "I think I've seen that person on #social_media#.",
     "Should I be #gawk_activity#?",
@@ -84,7 +113,7 @@ export default {
 	"drunk_state": "tipsy|slightly buzzed|buzzed|drunk|a little too drunk|pretty sober".split("|"),
 	"drunk_pacing": "too much|a lot|too fast|too little|enough|on an empty stomach".split("|"),
   "drink_proclivity": "love|like|hate|despise".split("|"),
-  'dialogue_drink_alcohol':["A #drinking_size# drink makes me #drinking_emotions#.",
+  'thought_drink_alcohol':["A #drinking_size# drink makes me #drinking_emotions#.",
     "...this tastes #superlatives#.",
     "I #drink_proclivity# #drinking_alcohol#.",
     "I just realized I #drink_proclivity# #drinking_alcohol#.",
@@ -93,11 +122,11 @@ export default {
     "I think I'm #drunk_state#.",
     "Should I have another #drinking_alcohol#? I'm #drunk_state#.",
     "I'll just get this so I have something in my hands instead of standing around empty-handed."],
-  'dialogue_drink_water':['Hydration is important.',
+  'thought_drink_water':['Hydration is important.',
     'I am #drinking_emotions# drinking from a #drinking_size# #drinking_vessel# of #drinking_water#.',
     "Hopefully this looks like a gin-and-tonic.",
     "God, I have such a headache right now."],
-  "dialogue_talk": ["#talk_normal#", '#talk_medium#', '#talk_gossip_tech#', '#talk_dating#', '#talk_weather_tech#', '#talk_weather_feeling#', '#talk_insult#', '#talk_normal_tech#'],
+  "thought_talk": ["#talk_normal#", '#talk_medium#', '#talk_gossip_tech#', '#talk_dating#', '#talk_weather_tech#', '#talk_weather_feeling#', '#talk_insult#', '#talk_normal_tech#'],
 
   
 
@@ -145,21 +174,48 @@ export default {
     "#awkwardtalk#",
     "#humblebrag#",
     "#worktalk#",
-    "#namedrop#"],
+    "#namedrop#",
+    "#apologytalk#",
+    "#interruptiontalk#"],
+
+  "it_time": "in a long time|in a few months|in a few years|in a decade|since I graduated from college|since high school".split("|"),
+"interruptiontalk":
+  ["-- as I was saying bef--",
+    "-- oops, sorry, I really have to say hi to someone I haven't seen #it_time# --",
+    "-- sorry, I had an urgent #at_medium# - what were you saying again?",
+    "Uh-huh, #uhuhuh#, yeah. (What were they saying? I zoned out.)"],
+
+"at_medium": "email text message tweet".split(" "),
+"at_event": "thing party event opening show project talk".split(" "),
+"apologytalk":
+  ["I haven't seen you in forever!",
+    "I haven't seen you in so long!",
+    "I'm so sorry I never replied to your #at_medium#.",
+    "How was your #at_event#? I'm so sorry I couldn't make it.",
+    "How was the rest of the #at_event#? Sorry I had to leave early.",
+    "It was okay - I really missed you at the #at_event#.",
+    "Sorry for the late #at_medium# the other day.",
+    "I'm sorry - I owe you a #at_medium#"],
+
 
 "nd_contact": "a good friend|friend of a friend|my friend's cousin|my cousin's friend|my friend's sibling|a family friend".split("|"),
 "nd_intro": "do an intro|introduce you".split("|"),
+"nd_chill": "chill|down-to-earth|friendly|nice|warm".split("|"),
+"nd_famous": "kinda famous|famous|kinda well-known|well-known|a big name|getting big".split("|"),
+"nd_locale": "summer house|place upstate|bungalow|beach house|apartment|penthouse|conference|dinner party|party|gathering".split("|"),
+"nd_venue": "gallery museum publication magazine zine space exhibition conference".split(" "),
 "namedrop":
   ["Have you heard of this person?",
-    "Oh, I actually know them - they’re #nd_contact#. Do you want me to #nd_intro#?"],
-//No way! That’s so cool - I know them too!
-//They’re really down-to-earth; even though they’re kinda famous, they’re really nice
-//Yeah, I was at their summer house / upstate house / fire island / hamptons / further future with them this summer / a few years back / a few months ago - you should come sometime!
+    "Oh, I actually know them - they’re #nd_contact#. Do you want me to #nd_intro#?",
+    "You should meet my friend! I'll #nd_intro#. They just had a #at_event# in the #nd_venue# I was just talking to you about.",
+    "That’s so cool - I know them too!",
+    "Even though they’re #nd_famous#, they’re really #nd_chill#.",
+    "Yeah, I was at their #nd_locale#, sometime #wt_worktime# -- you should come sometime!"],
 
 
 
 "wt_busy": "busy|really busy|super busy|busy as usual|so busy|busy as fuck".split("|"), 
-"wt_worktime": "this past week|this past month|the past semester|the past year|past few weeks".split("|"),
+"wt_worktime": "this past week|this past month|the past semester|the past year|the past few years".split("|"),
 "worktalk": 
   ["What do you do?",
     "What do you work on?",
@@ -196,7 +252,9 @@ export default {
     "Hi (mumble), it's good to see you again.",
     "Nice to, #uhuhuh#, see, #uhuhuh#, meet you again.",
     "#awk_ellipses#I'm going to get another drink",
-    "#awk_ellipses#I'm going to go to the bathroom"],
+    "#awk_ellipses#I'm going to go to the bathroom",
+    "#awk_ellipses#nice talking with you.",
+    "#awk_ellipses#"],
 
 
 
