@@ -61,14 +61,6 @@ if (require.main === module) {
     io.on('connection', (socket) => {
       console.log('connect ' + socket.id);
 
-      db.find({}, function(err, docs) {
-        console.log('sending saved agents to new connection');
-        for (var i=0; i<docs.length; i++) {
-          socket.broadcast.emit('message', docs[i]);
-          socket.emit('message', docs[i]);
-        }
-      });
-
       socket.on('echo', function (data) {
         console.log("echoing back data!");
         socket.emit('message', data);
@@ -82,6 +74,13 @@ if (require.main === module) {
         if (data.sender == 'quiz') {
           db.insert(data, function(err, newDoc) {
             console.log(`saved: ${data.quizResults.name}`);
+          });
+        } else if (data.sender == 'sim' && data.request == 'init') {
+          db.find({}, function(err, docs) {
+            console.log('sending saved agents to new connection');
+            for (var i=0; i<docs.length; i++) {
+              socket.emit('message', docs[i]);
+            }
           });
         }
       });
