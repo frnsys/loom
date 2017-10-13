@@ -7,7 +7,7 @@ export default {
 
   "drinking_size": "thimble-sized large huge good-sized generous tiny small".split(" "),
   "drinking_vessel": "bottle cup mug flask flagon".split(" "),
-  "drinking_alcohol": "wine tequila beer cider".split(" "),
+  "drinking_alcohol": "beer|cider|an IPA".split("|"),
   "drinking_emotions": ["#emotion_mellow#"],
 
   "drinking_water": ["smartwater", "tapwater", "#seltzer#", "water"],
@@ -68,7 +68,8 @@ export default {
     "I see they make a meta-meta reference to a meta-reference of the simulation in the simulation. Ha-ha-ha."],
 
 
-    
+   
+  "wr_that_other": "that other|my friend's other".split("|"),
   'thought_worry': 
     ["How many people do I know at this party? How many people do they know?",
       "I wonder if everyone here is having fun or pretending to have fun.",
@@ -77,17 +78,19 @@ export default {
       "Was it a bad idea to have invited them?",
       "Oh, I know that person on Twitter.",
       "Should I be talking to more people?",
-      "Should go to that other #at_event# tonight?"],
+      "Should I go to #wr_that_other# #at_event# tonight?"],
 
   "ddi_action": "flirting with|joking with|really listening to|just talking over|giving a sales pitch".split("|"),
   "ddi_cute": "attractive|cute|charming|smart|sweet|harmless|interesting|nice".split("|"),
+  "ddi_hip": "hip|cool|conceptual|weird|boring".split("|"),
   "thought_deep_inner":
     ["Are they #ddi_action# me?",
       "Hmm. #helpers_I_think# I've decided that this person is kind of #ddi_cute#",
       "#helpers_I_think# they'd be a cool new friend.",
       "#helpers_I_think# they'd be an interesting collaborator.",
       "This is kind of a boring conversation. I hope they don't notice that I'm zoning out.",
-      "This is interesting, but I'm so tired."],
+      "This is interesting, but I'm so tired.",
+      "This feels too #ddi_hip# for me."],
 
 
   "dw_social": ["say hello", "go over there and say hi", "nod my head", "introduce myself to them"],
@@ -95,10 +98,11 @@ export default {
   
   'thought_entered':["I #entered_arrival#. I'm #kinda-really# #emotion_anticipation#."],
   'thought_left':['The party was #kinda-really# #party_review#. I just had to #left_leave#.'],
+  "thought_I_wonder": "I wonder|around here|on this floor".split("|"),
   'thought_bathroom':["I have to #bathroom_activity#.",
     "Maybe I should come back and avoid the bathroom line.",
     "Should I hold it in until I get home?",
-    "Where's the bathroom?",
+    "Where's the bathroom #thought_I_wonder#?",
     "Can't tell if this is a fart or something more."],
   "thought_eat": ["I'm #kinda-really# hungry.",
     "The best thing to do at parties is to eat.",
@@ -116,11 +120,12 @@ export default {
 	"drunk_state": "tipsy|slightly buzzed|buzzed|drunk|a little too drunk|pretty sober".split("|"),
 	"drunk_pacing": "too much|a lot|too fast|too little|enough|on an empty stomach".split("|"),
   "drink_proclivity": "love|like|hate|despise".split("|"),
+  "drink_gives_me_a_headache": "gives me aheadache|gives me a stomachache|makes me feel weird now|makes me socially awkward|makes me annoying|confuses me|gives me a bad time".split("|"),
   'thought_drink_alcohol':["A #drinking_size# drink makes me #drinking_emotions#.",
     "...this tastes #superlatives#.",
     "I #drink_proclivity# #drinking_alcohol#.",
     "I #drunk_realized# I #drink_proclivity# #drinking_alcohol#.",
-    "#helpers_I_think# #drinking_alcohol# just gives me a headache. Why do I do this to myself?",
+    "#helpers_I_think# #drinking_alcohol# just #drink_gives_me_a_headache#. Why do I do this to myself?",
     "Am I drinking #drunk_pacing#?",
     "#helpers_I_think# I'm #drunk_state#.",
     "Should I have another #drinking_alcohol#? I'm #drunk_state#.",
@@ -237,10 +242,11 @@ export default {
   "#tt_cultural# Society, #tt_psych# Society"],
 
 "tt_publication": "magazine book paper symposium project theory article".split(" "),
-"tt_result": "all fucked|all beings in a simulation|without free will|going to be okay in the end".split("|"),
+"tt_result": "all mindless puppets|all fucked|all beings in a simulation|without free will|going to be okay in the end".split("|"),
+"tt_totally_recommend_it": "I'd totally recommend it|You should read it right now|It's so good|It's kind of #rest_adj#, but worthwhile|It's about #rp_leftist# #rp_projects#".split("|"),
 "theorytalk":
-  ["Have you heard of the #tt_publication#, #tt_title#?",
-  "I #helpers_recently# read #tt_title#.",
+  ["Have you heard of the #tt_publication#, '#tt_title#'?",
+  "I #helpers_recently# read '#tt_title#'; #tt_totally_recommend_it#.",
   "We're #tt_result#."],
 
 "dt_colleague": "colleague co-worker co-founder collaborator friend".split(" "),
@@ -252,7 +258,7 @@ export default {
     "Psst - I heard that they #helpers_recently# broke up.",
     "I heard that they broke up as #dt_colleague#s, but they're still talking to each other.",
     "Someone told me they're kind of #dt_asshole#",
-    "They work together??",
+    "Those two work together?",
     "What?? They're getting back together?"],
 
 
@@ -272,12 +278,13 @@ export default {
 
 "at_medium": "email text message tweet".split(" "),
 "at_event": "thing party event opening show project talk".split(" "),
+"at_so_sorry": "so sorry|sooo sorry|sooooooo sorry".split("|"),
 "apologytalk":
   ["I haven't seen you in forever!",
     "I haven't seen you in so long!",
-    "I'm so sorry I never replied to your #at_medium#.",
-    "How was your #at_event#? I'm so sorry I couldn't make it.",
-    "It was okay. How was your #at_event#? I'm so sorry I couldn't make it.",
+    "I'm #at_so_sorry# I never replied to your #at_medium#!",
+    "How was your #at_event#? I'm #at_so_sorry# I couldn't make it.",
+    "It was okay. How was your #at_event#? I'm #at_so_sorry# I couldn't make it.",
     "How was the rest of the #at_event#? Sorry I had to leave early.",
     "It was okay - I really missed you at the #at_event#.",
     "Sorry for the late #at_medium# the other day.",
@@ -484,13 +491,24 @@ export default {
     ["Lately I've been into slash fiction. Have you heard of #ff_topic#?",
       "I'm writing, #uhuhuh#, a slash #ff_format# about #ff_shippers#."],
 
-"talk_weather_convo": [""],
+  "wc_snow": "snow|blizzard".split("|"),
+  "wc_brutal_so": "brutal.. so|shitty.. so|kind of nice... but|exciting...yet|romantic.. and".split("|"),
+
+"talk_weather_convo": ["The weather's so #weather_adj#, right?",
+  "I can't wait until it #wc_snow.s# again.",
+  "I honestly can't deal with NYC #wc_snow.s#.",
+  "Winter is going to be #wc_brutal_so# I'm planning a vacation. #vacationtalk#"],
+
+
+
+
+
 "twt_handles": "darth leon rosemcgowan wendys dril deray".split(" "),
 "twt_kind": "private|super private|Weird|fanfic|jokey|finsta|corporate".split("|"),
 "twt_maybe_another": ["",""," and another #twt_kind# account"],
 "talk_twitter": 
    ["Are you part of the Twitter boycott tonight?",
-     "Just saw someone I only know through Twitter.",
+     "I just saw someone I only know through Twitter.",
      "I have, like, one #twt_kind# Twitter account#twt_maybe_another#.",
      "I'm only on Mastodon.",
      "I don't get Twitter.",
@@ -510,7 +528,7 @@ export default {
 "re_guilty": "guilty neutral helpless concerned".split(" "),
 "talk_real_estate":
   ["I wish I could buy a #re_condo#.",
-  "I feel #re_guilty# being a gentrifier."],
+  "I feel #re_guilty# about being a gentrifier in my neighborhood."],
 //TODO
 
 "race_brown": "black brown yellow latinx".split(" "),
@@ -541,18 +559,23 @@ export default {
   "Diluting ideals to try to be '#rp_practical# #rp_leftist#' makes no sense - you don't get anywhere by being complicit with #rp_capitalist# #rp_funding#."],
 
 "jl_technique": "machine learning|markov chains|neural nets|big data|cloud".split("|"),
+"jl_create": "design|create|invent|auto-generate".split("|"),
+"jl_apps": "apps|technologies|algorithms|choices|products".split("|"),
 "jl_name_first": "beautiful|magical|wonderful|wizard|simple|expand|contract|shrink|simple".split("|"),
 "jl_name_last": "soup|stew|congee|sandwich|lib|func|package|bird|nest|case".split("|"),
 "jl_name": ["#jl_name_first.capitalize##jl_name_last.capitalize#"],
 "talk_javascript_library": 
-  ["Have you used #jl_name#? It uses #jl_technique# and #jl_technique# to create #rp_new# "],
+  ["Have you used #jl_name#? It uses #jl_technique# and #jl_technique# to #jl_create# #rp_new# #jl_apps#."],
   
 "talk_literary_theory": ["#theorytalk#"],
 
+"mt_weaponized": "weaponized|evolved|competitive|covert|secret".split("|"),
+"mt_propaganda": "propaganda|intelligence|ideas|concepts".split("|"),
+"mt_microorganisms": "micro-organisms|viruses|bacteria|agents".split("|"),
 "talk_meme_theory": 
   ["Fuck memes; they're so mid-2017.",
-    "Memes are basically weaponized propaganda.",
-    "Memes are like microorganisms, evolving with attention."],
+    "Memes are basically #mt_weaponized# #mt_propaganda#.",
+    "Memes are like #mt_weaponized# #mt_microorganisms#, evolving with attention."],
 
 "rest_adj": "spicy saucy umami-ful juicy subtle pungent sour sweet bitter".split(" "),
 "rest_dish": "balut|massaman curry|khao soi|banh mi|croissant|escargot|congee|gochujang|bulgogi|tuna casserole|jello shot|veggie burger|inception pizza|artisanal broth|buddha bowl|kale chips|empanadas".split("|"),
