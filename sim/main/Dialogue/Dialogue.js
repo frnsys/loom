@@ -39,6 +39,7 @@ Dialogue.talkScores = new DialogueScoreSpace([
 Dialogue.createDialogue = function(agent, action) {
   if(action.topic) {
     var topicGrammar = "";
+    console.log(agent);
     if("convo_topics" in agent && (_.random(0, 1, true) < 0.5)) {
       topicGrammar = _.sample(agent.convo_topics);
       console.log("CONVO");

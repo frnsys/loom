@@ -1,4 +1,4 @@
-const TIME_RANGE = [100, 200]
+const TIME_RANGE = [10, 20]
 const TIME_SCALE = TIME_RANGE[0] + (TIME_RANGE[1] - TIME_RANGE[0])/2;
 
 export default {
