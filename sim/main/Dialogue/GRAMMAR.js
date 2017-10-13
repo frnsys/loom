@@ -13,7 +13,7 @@ export default {
   "drinking_water": ["smartwater", "tapwater", "#seltzer#", "water"],
   "seltzer": ["la croix", "perrier"],
 
-  "entered_arrival": ["just got here", "arrived", "am finally at the party"],
+  "entered_arrival": ["#helpers_recently# got here", "arrived", "am finally at the party"],
 
   'party_review': 'boring exciting ho-hum fun weird uncomfortable'.split(' '),
   'left_leave': ['do an Irish goodbye', 'head home', 'go to my next party of the night', 'take a walk by myself', 'grab a bite to eat', 'escape from society'],
@@ -36,6 +36,8 @@ export default {
   "talk_greetings": ["#greetings#!"],
   'greetings': 'Yo Sup Hey Hello'.split(" "),
 
+  "helpers_I_think": "I think|I suspect|I believe|I feel|I know|I #helpers_recently# realized".split("|"),
+  "helpers_recently": "just|recently|lately".split("|"),
 
 //////////////
 /* ACTIONS */
@@ -81,9 +83,9 @@ export default {
   "ddi_cute": "attractive|cute|charming|smart|sweet|harmless|interesting|nice".split("|"),
   "thought_deep_inner":
     ["Are they #ddi_action# me?",
-      "Hmm. I think I've decided that they're kind of #ddi_cute#",
-      "I think they'd be a cool new friend.",
-      "I think they'd be an interesting collaborator.",
+      "Hmm. #helpers_I_think# I've decided that this person is kind of #ddi_cute#",
+      "#helpers_I_think# they'd be a cool new friend.",
+      "#helpers_I_think# they'd be an interesting collaborator.",
       "This is kind of a boring conversation. I hope they don't notice that I'm zoning out.",
       "This is interesting, but I'm so tired."],
 
@@ -105,21 +107,22 @@ export default {
     "I should have probably have eaten dinner beforehand."],
   'thought_gawk':["I don't really understand this simulation.",
     "Swipe right, or swipe left?",
-    "I think I've seen that person on #social_media#.",
+    "#helpers_I_think# I've seen that person on #social_media#.",
     "Should I be #gawk_activity#?",
     "Our simulated selves are #kinda-really# #gawk_person_feeling#"],
 
   "social_media": ["OKCupid", "Twitter", "Facebook", "The New Inquiry website"],
+  "drunk_realized": "#helpers_recently# realized|forgot that|realized".split("|"),
 	"drunk_state": "tipsy|slightly buzzed|buzzed|drunk|a little too drunk|pretty sober".split("|"),
 	"drunk_pacing": "too much|a lot|too fast|too little|enough|on an empty stomach".split("|"),
   "drink_proclivity": "love|like|hate|despise".split("|"),
   'thought_drink_alcohol':["A #drinking_size# drink makes me #drinking_emotions#.",
     "...this tastes #superlatives#.",
     "I #drink_proclivity# #drinking_alcohol#.",
-    "I just realized I #drink_proclivity# #drinking_alcohol#.",
-    "I think #drinking_alcohol# just gives me a headache. Why do I do this to myself?",
+    "I #drunk_realized# I #drink_proclivity# #drinking_alcohol#.",
+    "#helpers_I_think# #drinking_alcohol# just gives me a headache. Why do I do this to myself?",
     "Am I drinking #drunk_pacing#?",
-    "I think I'm #drunk_state#.",
+    "#helpers_I_think# I'm #drunk_state#.",
     "Should I have another #drinking_alcohol#? I'm #drunk_state#.",
     "I'll just get this so I have something in my hands instead of standing around empty-handed."],
   'thought_drink_water':['Hydration is important.',
@@ -132,7 +135,7 @@ export default {
 
   'gawk_exclamation': 'Whoa|Cool|Hey|Hmm'.split('|'),
   'gawk_punctuation': '!|?|!!|?!|??|.'.split('|'),
-  'gawk_person_feeling': 'cute|talking together|interesting|weird!|funny|#emotion_anticipation#-looking|sad-looking - I wish I could cheer them up.'.split('|'),
+  'gawk_person_feeling': 'cute|talking together|interesting|weird!|funny|#emotion_anticipation#|sad - I wish I could cheer them up.'.split('|'),
   'gawk_activity': 'talking to someone new right now|drinking more|dancing more|meeting more new people'.split('|'),
 
   // this is here to kick-off talking sometimes
@@ -159,12 +162,14 @@ export default {
 
 "talk_-1_-1": ["#alltalk#", "#smalltalk#", "#awkwardtalk#"],
 "talk_-1__0": ["#alltalk#", "#dramatalk#"],
-"talk_-1__1": ["#h8tertalk#", "#promotalk#"],
-"talk__0_-1": ["talk0-1 #DEV_convo#"],
-"talk__0__0": ["talk00 #DEV_convo#"],
-"talk__0__1": ["talk01 #DEV_convo#"],
-"talk__1_-1": ["talk1-1 #techtalk#"],
-"talk__1__0": ["talk10 #DEV_convo#"],
+"talk_-1__1": ["#alltalk#", "#h8tertalk#", "#promotalk#"],
+
+"talk__0_-1": ["#alltalk#"], //TODO
+"talk__0__0": ["#alltalk#", "#vacationtalk#"], // TODO
+"talk__0__1": ["#alltalk#", "#industrytalk#", "#promotalk#"],
+
+"talk__1_-1": ["#alltalk#", "#techtalk#"],
+"talk__1__0": ["#alltalk#"], //TODO 
 "talk__1__1": ["#alltalk#", "#industrytalk#"],
 
 "alltalk": ["#sometimes_convo_connector# #alltalk_types#"],
@@ -179,7 +184,21 @@ export default {
     "#apologytalk#",
     "#interruptiontalk#",
     "#industrytalk#",
-    "#dramatalk#"],
+    "#dramatalk#",
+    "#theorytalk#",
+    "#vacationtalk#"],
+
+
+"vt_event": "wedding|retreat|gathering|party|festival|conference|vacation".split("|"),
+"vt_city": "Mexico City|Kyoto|Hong Kong|Miami|Greece|Basel|Paris|Venice|Tokyo|Berlin|Seoul|Beijing|The Bahamas|London|Vermont|upstate|San Francisco|California|Telluriude|Sundance".split("|"),
+"vt_venue": "beach|island|mountain|neighborhood|farm|cabin".split("|"),
+  
+"vacationtalk":
+  ["Oh, I'm going to #vt_city# for a #vt_event#.",
+    "I #helpers_recently# came back from a #vt_event# at a #vt_venue# in #vt_city#!",
+    "There's a really small #vt_venue# in #vt_city# that I'm going to.",
+    "I'm going to #vt_city# this weekend!",
+    "I've been traveling so much - #helpers_recently# came back from a #vt_event#, and then am heading to #vt_city# for a #vt_venue#"],
 
 "sometimes_convo_connector": ["","","","#convo_connector#"],
 "cc_ender": 
@@ -199,19 +218,40 @@ export default {
       "Uh-huh.",
       "Yeah."],
      
-"convo_connector": ["#cc_ender#", "#cc_starter#", "#cc_starter# #cc_ender"],
-    
+"convo_connector": ["#cc_ender#", "#cc_starter#", "#cc_starter# #cc_ender#"],
+
+"tt_order": "Order|Logic|Rhythm|Techne".split("|"),
+"tt_things": "Things|The World|Paradoxes|Silences|Methods|Reasons|Telos".split("|"),
+"tt_cultural": "Cultural|Post-Cultural|Post-Sokal|Intersectional|Narrative|Empathic|Virtual|Real|Technological".split("|"),
+"tt_political": "Capitalist|Socialist|Hegemonic|Democratic|Totalitarian|Anarchic|Cooperative".split("|"),
+"tt_psych": "Unconscious|Conscious|Libidinal|Cruelty|Generosity|Reflective|Death-drive|Deliberate".split("|"),
+ 
+"tt_title": ["The #tt_order# of #tt_things#",
+  "Civilization and its #tt_things#",
+  "The #tt_cultural# logic of #tt_period# #tt_dynamic#",
+  "The #tt_political# #tt_psych#",
+  "#tt_psych#-#tt_cultural# Manifesto",
+  "#tt_political#-#tt_cultural# Manifesto",
+  "#tt_cultural# Society, #tt_psych# Society"],
+
+"tt_publication": "magazine book paper symposium project theory article".split(" "),
+"tt_result": "all fucked|all beings in a simulation|without free will|going to be okay in the end".split("|"),
+"theorytalk":
+  ["Have you heard of the #tt_publication#, #tt_title#?",
+  "I #helpers_recently# read #tt_title#.",
+  "According to #tt_title#, we're #tt_result#."],
 
 "dt_colleague": "colleague co-worker co-founder collaborator friend".split(" "),
 "dt_asshole": "an asshole|a misogynist|power-hungry|a flake|a jerk".split("|"),
 "dramatalk":
   ["Did you hear about those two over there?",
     "Yeah, I know. Did you hear the recent gossip about them?",
-    "I think they're more than #dt_colleague.s#, if you know what I mean",
-    "So - I heard that they just broke up.",
-    "I heard that they broke up as #dt_colleague.s#, but they're still talking to each other.",
+    "#helpers_I_think# they're more than #dt_colleague#s, if you know what I mean",
+    "So - I heard that they #helpers_recently# broke up.",
+    "I heard that they broke up as #dt_colleague#s, but they're still talking to each other.",
     "Someone told me that they're kind of a #dt_asshole#",
-    "What? They're getting back together??"],
+    "They work together??",
+    "What?? They're getting back together?"],
 
 
   "it_shoptalk": "javascript library|NYT op-ed|Twitter scandal|meme|MacArthur grant|tweet|ML paper|project|opening|grant|award".split("|"),
@@ -249,7 +289,7 @@ export default {
 "namedrop":
   ["Have you heard of this person?",
     "Oh, I actually know them - they’re #nd_contact#. Do you want me to #nd_intro#?",
-    "You should meet my friend! I'll #nd_intro#. They just had a #at_event# in the #nd_venue# I was just talking to you about.",
+    "You should meet my friend! I'll #nd_intro#. They #helpers_recently# had a #at_event# in the #nd_venue# I was #helpers_recently# talking to you about.",
     "That’s so cool - I know them too!",
     "Even though they’re #nd_famous#, they’re really #nd_chill#.",
     "Yeah, I was at their #nd_locale#, sometime #wt_worktime# -- you should come sometime!"],
@@ -281,9 +321,9 @@ export default {
 "hb_youtoo": "I'm sure you know how it is|you probably are too|you know what I mean|you're probably in a similar position".split("|"),
 "humblebrag": 
     ["I have so many projects going on, I don’t know what to do.",
-      "I just hired someone, and it’s so interesting managing people, you know?",
-      "I just started at this thing I’m totally unqualified for.",
-      "I’m just started being the #hb_role# of a #hb_org#, and it's really #hb_feels#",
+      "I #helpers_recently# hired someone, and it’s so interesting managing people, you know?",
+      "I #helpers_recently# started at this #hb_org# I’m totally unqualified for.",
+      "I #helpers_recently# started being the #hb_role# of a #hb_org#, and it's really #hb_feels#",
       "That’s great! Things have been really #hb_feels# and busy for me too - #hb_youtoo#."],
 
 
@@ -307,9 +347,10 @@ export default {
 "uhuhuh": ["uh", "er", "um", "uhh", "eh", "errr", "umm"],
 "smalltalk": 
    ["This is such an #polite_interesting# office, isn't it?",
+   "This is an #polite_interesting# party, isn't it?",
      "The weather's so #weather_adj#, right?",
-     "#uhuhuh.capitalize#, #uhuhuh#,  where do you live?",
-     "#uhuhuh.capitalize#, how long have you lived in #st_location#?",
+     "#uhuhuh#, #uhuhuh#,  where do you live?",
+     "#uhuhuh#, how long have you lived in #st_location#?",
      "Who do you know here?"],
 
 "h8tertalk":
@@ -317,12 +358,12 @@ export default {
     "I have better things to do with my Friday night. What about you?",
     "Ugh. This is such a scene, don't you think?"],
 
-"personal_project": "startup|firm|creative practice|meditation practice|non-profit|publication|gallery show|residency|teaching gig|grad program",
+"personal_project": "startup|firm|creative practice|meditation practice|non-profit|publication|gallery show|residency|teaching gig|grad program".split("|"),
 "startup_model": "Uber|AirBnB|Facebook|Amazon Prime|coffeeshop|WeWork|Apple|Museum|Tinder".split("|"),
 "promotalk": 
 	["Oh, that's soo interesting.",
 	"Can I tell you about my #personal_project#?",
-	"That reminds me of the #personal_project# I just started! Let me tell you about it.",
+	"That reminds me of the #personal_project# I #helpers_recently# started! Let me tell you about it.",
 	"You know, my #personal_project# could really use a fresh pair of eyes.",
 	"I'm working on the #startup_model# for #personal_project#s. We're in stealth mode."],
 
@@ -349,8 +390,8 @@ export default {
      "doomed to fail under its own contradictions"],
 "techtalk":
   ["What do you think about #cryptocurrency#", 
-    "Well, #tt_tech_bad# #tt_society_speculation.",
-    "I just invested in #cryptocurrency#",
+    "Well, #tt_tech_bad# #tt_society_speculation#.",
+    "I #helpers_recently# invested in #cryptocurrency#.",
     "#cryptocurrency.capitalize# is #tt_society_speculation#."],
 
 
