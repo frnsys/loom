@@ -24,7 +24,7 @@ var world = {
   stats: new Stats(),
   socialNetwork: new SocialNetwork(),
   render: function(name, text, type, other) {
-    var prob_weight = other ? 2 : 1; // weigh conversations more
+    var prob_weight = other ? 4 : 1; // weigh conversations more
     if (Math.random() < MAX_AGENTS_SHOW_ALL/Object.keys(world.agents).length * prob_weight) {
       var el = world.renderAction(name, text, type, other);
       $('.sim').append(el);
@@ -33,9 +33,10 @@ var world = {
         $('#focused-agent-updates').prepend($(el).clone());
       }
 
-      if ($(window).scrollTop() + $(window).height() > $(document).height() - 300) {
-        $('html, body').animate({ scrollTop: $(document).height() });
-      }
+      // if ($(window).scrollTop() + $(window).height() > $(document).height() - 300) {
+        // $('html, body').animate({ scrollTop: $(document).height() });
+      // }
+      $('html, body').animate({ scrollTop: $(document).height() });
     }
   },
   renderAction: function(name, text, type, other) {
@@ -53,7 +54,7 @@ function removeAgent(name) {
 window.removeAgent = removeAgent;
 
 
-var n_agents = 30;
+var n_agents = 0;
 
 // GENERATE RANDOM AGENTS //
 var convo_topics_for_random_agents =

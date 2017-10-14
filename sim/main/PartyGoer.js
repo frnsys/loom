@@ -32,6 +32,8 @@ class PartyGoer extends Agent {
     this.world = world;
     this.id = name;
 
+    world.socialNetwork.nodes.push(this.id);
+
     this.socialModel = new SocialModel();
     this.topicPreference = state.topicPreference;
     this.talkingTo = null;
@@ -160,16 +162,17 @@ class PartyGoer extends Agent {
         var other = this.world.agents[a.id];
         var val = this.socialModel.topicSatisfaction(other, a.topic);
       }
-      return acc + (affinities[a.id] ? affinities[a.id] : state.sociability) * (val + 1) * 10;
+      // return acc + (affinities[a.id] ? affinities[a.id] : state.sociability) * (val + 1) * 10;
+      return acc + state.sociability * (val + 1) * 10;
     }, 0) + (1000 * state.talking.length);
 
     var factors = {
       bac: (-Math.pow(state.bac/3 - 3, 3) + 9),
-      bladder: -Math.pow(state.bladder/50, 3),
-      hunger: -Math.pow(state.hunger/100, 3),
-      thirst: -Math.pow(state.thirst/50, 3),
+      bladder: -Math.pow(state.bladder/50, 1),
+      hunger: -Math.pow(state.hunger/100, 1),
+      thirst: -Math.pow(state.thirst/50, 2),
       boredom: (-Math.pow(state.boredom, 2)/100),
-      awkwardness: (-Math.pow(state.awkwardness, 2)/50),
+      awkwardness: (-Math.pow(state.awkwardness, 3)/50),
       sociability: ((state.sociability + 1) * 20),
       talking: talking,
       commitment: -state.commitment

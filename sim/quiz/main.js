@@ -20,17 +20,17 @@ var check_and_disable_cancelconfirm = () => {
   var nonemptyLikert = $(".likert_question input:checked").length;
   var nonemptyMultiple = $(".multiple_choice_question input:checked").length;
 
-if ((nonemptyText + nonemptyLikert + nonemptyCheckboxes + nonemptyMultiple) == $(".question").length) {
-    $("button#confirm").removeAttr("disabled");
-  } else {
-    $("button#confirm").attr("disabled", "disabled");
-  }
+// if ((nonemptyText + nonemptyLikert + nonemptyCheckboxes + nonemptyMultiple) == $(".question").length) {
+//     $("button#confirm").removeAttr("disabled");
+//   } else {
+//     $("button#confirm").attr("disabled", "disabled");
+//   }
 
-if ($(".question").length) {
-    $("button#cancel").removeAttr("disabled");
-  } else {
-    $("button#cancel").attr("disabled", "disabled");
-  }
+// if ($(".question").length) {
+//     $("button#cancel").removeAttr("disabled");
+//   } else {
+//     $("button#cancel").attr("disabled", "disabled");
+//   }
 
 
 }
@@ -43,8 +43,8 @@ $(function() {
   })
 
   // FOR DEBUGGING
-  // $("#question_name input").val("Dan Taeyoung");
-  // $("#question_twitter_handle input").val("dantaeyoung");
+  $("#question_name input").val("Your Name");
+  $("#question_twitter_handle input").val("foo");
   $("input").prop("checked", "checked");
   check_and_disable_cancelconfirm();
 //

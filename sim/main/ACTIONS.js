@@ -1,4 +1,4 @@
-const TIME_RANGE = [10, 20]
+const TIME_RANGE = [100, 200]
 const TIME_SCALE = TIME_RANGE[0] + (TIME_RANGE[1] - TIME_RANGE[0])/2;
 
 export default {
@@ -45,8 +45,9 @@ export default {
   'talk': {
     timeout: [50, 100],
     successor: function(action, state) {
-        state.boredom = Math.max(state.boredom-8*TIME_SCALE, 0);
-        state.awkwardness = Math.max(state.awkwardness-8*TIME_SCALE, 0);
+        state.boredom = Math.max(state.boredom-12*TIME_SCALE, 0);
+        state.awkwardness = Math.max(state.awkwardness-12*TIME_SCALE, 0);
+        state.hunger = Math.max(state.hunger-10*TIME_SCALE, 0);
         state.talking.push({
           id: action.to,
           topic: action.topic
