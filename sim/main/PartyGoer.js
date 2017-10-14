@@ -59,12 +59,16 @@ class PartyGoer extends Agent {
   actions(state) {
     // remove 'talk' because we create them later for specific people
     // otherwise we'd get a 'talk' action where the agent isn't talking to anyone
-    var actions = _.without(Object.keys(ACTIONS), 'talk').map(name => {
-      return {
-        name: name,
-        emoji: _.sample(ACTIONS[name].emoji)
-      }
-    });
+    if (Math.random() < 0.5) {
+      var actions = [];
+    } else {
+      var actions = _.without(Object.keys(ACTIONS), 'talk').map(name => {
+        return {
+          name: name,
+          emoji: _.sample(ACTIONS[name].emoji)
+        }
+      });
+    }
 
     // talking
     if (this.talkingTo === null) {
@@ -135,9 +139,9 @@ class PartyGoer extends Agent {
 
   entropy(state) {
     state.commitment = Math.max(state.commitment-1, 0);
-    state.hunger += 1 + state.metabolism;
+    state.hunger += 1 + state.metabolism/2;
     state.thirst += 1;
-    state.boredom += 1 + state.impatience;
+    state.boredom += 1 + state.impatience/2;
     state.awkwardness += 50/(state.sociability + 1);
     state.bac = Math.max(state.bac - 0.2, 0);
     state.sociability = this.baseline.sociability + Math.pow(state.bac, 2);

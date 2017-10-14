@@ -113,7 +113,7 @@ function run() {
     _.each(charts, c => c.update());
     ui.update();
 
-    if (elapsedFrames % 54000 == 0 && elapsedFrames > 0) {
+    if (elapsedFrames % 27000 == 0 && elapsedFrames > 0) {
       world.stats.update();
     }
     if (elapsedFrames % 600 == 0 && elapsedFrames > 0) {
@@ -130,6 +130,7 @@ function run() {
   }
   elapsedFrames++;
 }
+
 
 sockets.init();
 run();
