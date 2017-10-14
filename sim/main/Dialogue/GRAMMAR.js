@@ -81,6 +81,7 @@ export default {
   "wr_that_other": "that other|my friend's other".split("|"),
   'thought_worry': 
     ["How many people do I know at this party? How many people do they know?",
+      "I barely know anyone here.",
       "I wonder if everyone here is having fun or pretending to have fun.",
       "I can't believe they're here. Do I #dw_social# or #dw_antisocial#?",
       "What's their name again? I forgot.",
@@ -243,10 +244,12 @@ export default {
 "tt_cultural": "Cultural|Post-Cultural|Post-Sokal|Intersectional|Narrative|Empathic|Virtual|Real|Technological".split("|"),
 "tt_political": "Capitalist|Socialist|Hegemonic|Democratic|Totalitarian|Anarchic|Cooperative".split("|"),
 "tt_psych": "Unconscious|Conscious|Libidinal|Cruelty|Generosity|Reflective|Death-drive|Deliberate".split("|"),
- 
+
+"tt_period": "late|early|mid|premature".split("|"),
+"tt_dynamic": "capitalism|communism|society|nature|post-humanism".split("|"),
 "tt_title": ["The #tt_order# of #tt_things#",
   "Civilization and its #tt_things#",
-  "The #tt_cultural# logic of #tt_period# #tt_dynamic#",
+  "The #tt_cultural# logic of #tt_period.capitalize# #tt_dynamic.capitalize#",
   "The #tt_political# #tt_psych#",
   "#tt_psych#-#tt_cultural# Manifesto",
   "#tt_political#-#tt_cultural# Manifesto",
@@ -390,7 +393,8 @@ export default {
 	"Can I tell you about my #personal_project#?",
 	"That reminds me of the #personal_project# I #helpers_recently# started! Let me tell you about it.",
 	"You know, my #personal_project# could really use a fresh pair of eyes.",
-	"I'm working on the #startup_model# for #personal_project#s. We're in stealth mode."],
+  "The project is like a #startup_model#, but combined with a #startup_model#. Want to hear more?",
+	"I'm working on a #startup_model# for #personal_project#s. We're in stealth mode."],
 
 
 "cryptocurrency": "Bitcoin|the blockchain|Ethereum|cryptocurrency|that Bitcoin stuff".split("|"),
@@ -567,7 +571,7 @@ export default {
 
   
 "talk_radical_politics":
-  ["#helpers_i_think# that #rp_leftist# #rp_projects# need to have #rp_new# #rp_ways# of doing things: #rp_leftist# #rp_funding#, or #rp_new# #rp_rhythms#.",
+  ["#helpers_I_think# that #rp_leftist# #rp_projects# need to have #rp_new# #rp_ways# of doing things: #rp_leftist# #rp_funding#, or #rp_new# #rp_rhythms#.",
   "I want to believe in #rp_leftist# #rp_projects#, but ultimately it comes down to #rp_funding#. Are #rp_new# #rp_ways# really #rp_practical#?",
   "I used to be #rp_leftist#, now I'm more #rp_leftist#.",
   "[thispos:#rp_leftist#]I don't care about being an #rp_idealistic# #thispos#; I just think that #rp_practical# #rp_ways# of #rp_funding# make more interesting #thispos# #rp_projects#.",
@@ -604,13 +608,13 @@ export default {
 
  
   "pg_pretty_good": "pretty good|pretty neutral|so-so|kind of conflicting|mixed".split("|"),
-  "pg_org": "DSA|local community board",
+  "pg_org": "DSA|local community board".split("|"),
   "pg_cuomo": "Cuomo|Zuckerberg|The Rock|Letitia James|Bruce Springsteen|Nydia Velazquez|Chuck Schumer|Kirsten Gillebrand".split("|"),
   "pg_president": "president|mayor".split("|"),
 
   "talk_political_gossip": 
-  ["I hear #pg_pretty_good# things about the #pg_org#",
-  "I want to run for office, but don't know if there's space for #rp_leftist# candidates",
+  ["I hear #pg_pretty_good# things about the #pg_org#.",
+  "I want to run for office, but don't know if there's space for #rp_leftist# candidates.",
   "I hear a rumor that #pg_cuomo# is planning to run for #pg_president# in 2020."],
 
 
