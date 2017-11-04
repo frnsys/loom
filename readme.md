@@ -1,6 +1,5 @@
 # Setup
 
-In the `viz/` directory: 
 ```
 npm install -d
 npm start
